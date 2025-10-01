@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Forms and User Input</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: calc(100vh - 40px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .chapter-info {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 20px 40px;
+        }
+        .content h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+        .content h3 {
+            color: #764ba2;
+            margin: 20px 0 10px;
+        }
+        .content p {
+            margin: 15px 0;
+        }
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .content li {
+            margin: 8px 0;
+        }
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+        .back-to-tutorial {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-to-tutorial a {
+            color: #764ba2;
+            text-decoration: none;
+        }
+        .back-to-tutorial a:hover {
+            text-decoration: underline;
+        }
+        .form-demo {
+            border: 2px solid #eee;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .form-demo input, .form-demo textarea, .form-demo select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-demo button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-demo button:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chapter 4: Forms and User Input</h1>
+            <div class="chapter-info">Create interactive forms to collect user information</div>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>Form Basics</h2>
+                <p>The <form> element defines a form for user input. Forms are the primary way users interact with websites.</p>
+
+                <div class="code-example">
+<form action="/submit" method="post"><br>
+    <!-- Form controls go here --><br>
+    <input type="text" name="username"><br>
+    <button type="submit">Submit</button><br>
+</form>
+                </div>
+
+                <h3>Important Form Attributes</h3>
+                <ul>
+                    <li><strong>action</strong> - URL where form data is sent</li>
+                    <li><strong>method</strong> - HTTP method (GET or POST)</li>
+                    <li><strong>novalidate</strong> - Disable built-in validation</li>
+                    <li><strong>autocomplete</strong> - Enable/disable autocomplete</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Text Input Fields</h2>
+                <h3>Single-line Text Input</h3>
+                <div class="code-example">
+<input type="text" name="fullname" placeholder="Enter your full name" required>
+                </div>
+
+                <h3>Specialized Text Inputs</h3>
+                <div class="code-example">
+<input type="email" name="email" placeholder="your@email.com"><br><br>
+<input type="password" name="password" placeholder="Password"><br><br>
+<input type="url" name="website" placeholder="https://example.com"><br><br>
+<input type="tel" name="phone" placeholder="Phone number"><br><br>
+<input type="search" name="query" placeholder="Search...">
+                </div>
+            </section>
+
+            <section>
+                <h2>Choice Inputs</h2>
+                <h3>Radio Buttons (Single Choice)</h3>
+                <div class="code-example">
+<input type="radio" name="gender" value="male" id="male"><br>
+<label for="male">Male</label><br><br>
+<input type="radio" name="gender" value="female" id="female"><br>
+<label for="female">Female</label>
+                </div>
+
+                <h3>Checkboxes (Multiple Choices)</h3>
+                <div class="code-example">
+<input type="checkbox" name="hobbies" value="reading" id="reading"><br>
+<label for="reading">Reading</label><br><br>
+<input type="checkbox" name="hobbies" value="gaming" id="gaming"><br>
+<label for="gaming">Gaming</label>
+                </div>
+            </section>
+
+            <section>
+                <h2>Dropdown Menus and Text Areas</h2>
+                <h3>Select Dropdown</h3>
+                <div class="code-example">
+<select name="country"><br>
+    <option value="">Select Country</option><br>
+    <option value="us">United States</option><br>
+    <option value="ca">Canada</option><br>
+    <option value="uk">United Kingdom</option><br>
+</select>
+                </div>
+
+                <h3>Textarea for Multi-line Input</h3>
+                <div class="code-example">
+<textarea name="message" rows="4" cols="50" placeholder="Enter your message here..."></textarea>
+                </div>
+            </section>
+
+            <section>
+                <h2>Labels and Accessibility</h2>
+                <p>Use <label> to associate text with form controls. The <code>for</code> attribute links to the input's <code>id</code>.</p>
+
+                <div class="code-example">
+<label for="email">Email Address:</label><br><br>
+<input type="email" id="email" name="email">
+                </div>
+
+                <div class="highlight">
+                    <strong>Why Labels Matter:</strong> Labels improve accessibility for screen readers and make forms easier to use by allowing users to click on the label to focus the input.
+                </div>
+            </section>
+
+            <section>
+                <h2>Grouping Form Elements</h2>
+                <p>Use <fieldset> and <legend> to group related form controls:</p>
+
+                <div class="code-example">
+<fieldset><br>
+    <legend>Personal Information</legend><br>
+    <label for="firstname">First Name:</label><br>
+    <input type="text" id="firstname" name="firstname"><br><br>
+    <label for="lastname">Last Name:</label><br>
+    <input type="text" id="lastname" name="lastname"><br>
+</fieldset>
+                </div>
+            </section>
+
+            <section>
+                <h2>Form Validation</h2>
+                <p>HTML5 provides built-in validation with attributes:</p>
+
+                <div class="code-example">
+<input type="email" required> <!-- Must be valid email --><br>
+<input type="password" minlength="8"> <!-- Minimum 8 characters --><br>
+<input type="number" min="1" max="100"> <!-- Number between 1-100 --><br>
+<input type="text" pattern="[A-Za-z]+"> <!-- Letters only -->
+                </div>
+
+                <p>Common validation attributes:</p>
+                <ul>
+                    <li><strong>required</strong> - Field must be filled</li>
+                    <li><strong>maxlength/minlength</strong> - Character limits</li>
+                    <li><strong>min/max</strong> - Numeric ranges</li>
+                    <li><strong>pattern</strong> - Regular expression validation</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Complete Form Example</h2>
+                <div class="form-demo">
+                    <form>
+                        <fieldset>
+                            <legend>Contact Form</legend>
+
+                            <label for="name">Full Name:</label><br>
+                            <input type="text" id="name" name="name" required><br><br>
+
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="email" required><br><br>
+
+                            <label for="message">Message:</label><br>
+                            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Subscribe to newsletter</label><br><br>
+
+                            <button type="submit">Send Message</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercise</h2>
+                <p>Create a registration form with the following fields:</p>
+                <ol>
+                    <li>Username (required, 3-20 characters)</li>
+                    <li>Email (required, valid email format)</li>
+                    <li>Password (required, minimum 6 characters)</li>
+                    <li>Confirm Password</li>
+                    <li>Gender (radio buttons)</li>
+                    <li>Favorite subjects (checkboxes: Math, Science, Literature)</li>
+                    <li>Country (dropdown)</li>
+                    <li>Comments (textarea)</li>
+                    <li>Terms agreement (required checkbox)</li>
+                    <li>Submit button</li>
+                </ol>
+
+                <p>Use proper labels, fieldsets for grouping, and validation attributes.</p>
+            </section>
+
+            <div class="back-to-tutorial">
+                <a href="index.html">← Back to Tutorial Home</a>
+            </div>
+
+            <div class="navigation">
+                <a href="chapter3.html" class="nav-btn">← Previous Chapter</a>
+                <a href="chapter5.html" class="nav-btn">Next Chapter →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

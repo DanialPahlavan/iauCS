@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Semantic HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: calc(100vh - 40px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .chapter-info {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 20px 40px;
+        }
+        .content h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+        .content h3 {
+            color: #764ba2;
+            margin: 20px 0 10px;
+        }
+        .content p {
+            margin: 15px 0;
+        }
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .content li {
+            margin: 8px 0;
+        }
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .semantic-structure {
+            background: #f8f9ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .structure-visual {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+        .nav-btn.disabled {
+            background: #ccc;
+            pointer-events: none;
+        }
+        .back-to-tutorial {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-to-tutorial a {
+            color: #764ba2;
+            text-decoration: none;
+        }
+        .back-to-tutorial a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chapter 5: Semantic HTML</h1>
+            <div class="chapter-info">Use modern semantic tags for better structure, accessibility, and SEO</div>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>What are Semantic Elements?</h2>
+                <p>Semantic HTML uses meaningful tags that clearly describe their content and purpose. Instead of generic <div> containers, semantic elements tell browsers, search engines, and assistive technologies what each section contains.</p>
+
+                <div class="highlight">
+                    <strong>Why Semantics Matter:</strong>
+                    <ul>
+                        <li>Better accessibility for screen readers</li>
+                        <li>Improved SEO (search engine optimization)</li>
+                        <li>Easier maintenance and collaboration</li>
+                        <li>Better structure for styling and JavaScript</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Basic Page Structure</h2>
+                <p>A typical semantic webpage structure:</p>
+
+                <div class="semantic-structure">
+                    <div class="structure-visual">
+                        <header><br>
+                        ├── Site header/navigation<br>
+                        </header><br><br>
+                        <main><br>
+                        ├── <article> (main content)<br>
+                        │   ├── <section> (sections within article)<br>
+                        │   └── <section><br>
+                        ├── <aside> (sidebar)<br>
+                        └── <nav> (secondary navigation)<br>
+                        </main><br><br>
+                        <footer><br>
+                        └── Site footer<br>
+                        </footer>
+                    </div>
+                </div>
+
+                <div class="code-example">
+<header>Site Header</header><br><br>
+<nav>Main Navigation</nav><br><br>
+<main><br>
+    <article>Main Article</article><br>
+    <aside>Sidebar</aside><br>
+</main><br><br>
+<footer>Site Footer</footer>
+                </div>
+            </section>
+
+            <section>
+                <h2>Key Semantic Elements</h2>
+                <h3>Document Structure Elements</h3>
+                <ul>
+                    <li><strong><header></strong> - Introductory content or navigation</li>
+                    <li><strong><nav></strong> - Navigation links</li>
+                    <li><strong><main></strong> - Main content (unique to page)</li>
+                    <li><strong><article></strong> - Self-contained content</li>
+                    <li><strong><section></strong> - Thematic grouping of content</li>
+                    <li><strong><aside></strong> - Related but not essential content</li>
+                    <li><strong><footer></strong> - Footer content</li>
+                </ul>
+
+                <h3>Text Content Elements</h3>
+                <ul>
+                    <li><strong><figure></strong> - Self-contained media content</li>
+                    <li><strong><figcaption></strong> - Caption for figure</li>
+                    <li><strong><time></strong> - Date/time representation</li>
+                    <li><strong><mark></strong> - Highlighted text</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Common Semantic Patterns</h2>
+                <h3>Blog Post/Article Structure</h3>
+                <div class="code-example">
+<article><br>
+    <header><br>
+        <h1>Article Title</h1><br>
+        <time datetime="2023-12-25">December 25, 2023</time><br>
+        <p>By Author Name</p><br>
+    </header><br>
+    <br>
+    <section><br>
+        <h2>Introduction</h2><br>
+        <p>Article content...</p><br>
+    </section><br>
+    <br>
+    <section><br>
+        <h2>Main Content</h2><br>
+        <p>More content...</p><br>
+    </section><br>
+</article>
+                </div>
+
+                <h3>Navigation Menu</h3>
+                <div class="code-example">
+<nav><br>
+    <ul><br>
+        <li><a href="#home">Home</a></li><br>
+        <li><a href="#about">About</a></li><br>
+        <li><a href="#contact">Contact</a></li><br>
+    </ul><br>
+</nav>
+                </div>
+
+                <h3>Sidebar Content</h3>
+                <div class="code-example">
+<aside><br>
+    <section><br>
+        <h3>Related Posts</h3><br>
+        <ul><br>
+            <li><a href="#">Related Post 1</a></li><br>
+            <li><a href="#">Related Post 2</a></li><br>
+        </ul><br>
+    </section><br><br>
+    <section><br>
+        <h3>Categories</h3><br>
+        <ul><br>
+            <li><a href="#">HTML</a></li><br>
+            <li><a href="#">CSS</a></li><br>
+        </ul><br>
+    </section><br>
+</aside>
+                </div>
+            </section>
+
+            <section>
+                <h2>Semantic vs Generic Approach</h2>
+                <p><strong>Non-semantic (old way):</strong></p>
+                <div class="code-example">
+<div id="header">...</div><br>
+<div id="nav">...</div><br>
+<div id="main">...</div><br>
+<div id="sidebar">...</div><br>
+<div id="footer">...</div>
+                </div>
+
+                <p><strong>Semantic (modern way):</strong></p>
+                <div class="code-example">
+<header>...</header><br>
+<nav>...</nav><br>
+<main>...</main><br>
+<aside>...</aside><br>
+<footer>...</footer>
+                </div>
+
+                <div class="highlight">
+                    <strong>Benefits of semantic approach:</strong>
+                    <ul>
+                        <li>Screen readers can understand page structure</li>
+                        <li>Search engines can better index content</li>
+                        <li>Code is self-documenting</li>
+                        <li>Better SEO performance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Accessibility Benefits</h2>
+                <p>Semantic HTML helps assistive technologies like screen readers:</p>
+                <ul>
+                    <li><strong>Navigation</strong> - Users can skip to main content</li>
+                    <li><strong>Landmarks</strong> - Screen readers announce section types</li>
+                    <li><strong>Context</strong> - Content relationships are clear</li>
+                    <li><strong>SEO</strong> - Search engines understand content hierarchy</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Practice Exercise</h2>
+                <p>Convert a non-semantic HTML page to use semantic elements:</p>
+                <ol>
+                    <li>Use <header> instead of <div class/id="header"></li>
+                    <li>Replace navigation divs with <nav></li>
+                    <li>Use <main> for the primary content area</li>
+                    <li>Use <aside> for sidebars</li>
+                    <li>Use <article> for self-contained content</li>
+                    <li>Use <section> to group related content</li>
+                    <li>Use <footer> for footer content</li>
+                    <li>Add appropriate headings within each section</li>
+                </ol>
+
+                <p>Create a complete semantic webpage structure for a blog post.</p>
+            </section>
+
+            <section>
+                <h2>Final Project</h2>
+                <p>Combine everything you've learned:</p>
+                <ol>
+                    <li>Create a multi-page website (at least 3 pages)</li>
+                    <li>Use semantic HTML structure</li>
+                    <li>Add links between pages</li>
+                    <li>Include images with alt text</li>
+                    <li>Create a working contact form</li>
+                    <li>Ensure accessibility (labels, headings, alt text)</li>
+                    <li>Test in different browsers</li>
+                </ol>
+
+                <div class="highlight">
+                    <strong>Congratulations!</strong> You've completed the HTML Tutorial. Continue to the CSS tutorial to learn how to style your HTML pages, and JavaScript to add interactivity.
+                </div>
+            </section>
+
+            <div class="back-to-tutorial">
+                <a href="index.html">← Back to Tutorial Home</a>
+            </div>
+
+            <div class="navigation">
+                <a href="chapter4.html" class="nav-btn">← Previous Chapter</a>
+                <span class="nav-btn disabled">Next Chapter</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Getting Started with HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: calc(100vh - 40px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .chapter-info {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 20px 40px;
+        }
+        .content h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+        .content h3 {
+            color: #764ba2;
+            margin: 20px 0 10px;
+        }
+        .content p {
+            margin: 15px 0;
+        }
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .content li {
+            margin: 8px 0;
+        }
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+        .nav-btn.disabled {
+            background: #ccc;
+            pointer-events: none;
+        }
+        .back-to-tutorial {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-to-tutorial a {
+            color: #764ba2;
+            text-decoration: none;
+        }
+        .back-to-tutorial a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chapter 1: Getting Started with HTML</h1>
+            <div class="chapter-info">Learn the basics of HTML</div>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>What is HTML?</h2>
+                <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard markup language used to create web pages. HTML describes the structure of a webpage and tells the browser how to display content.</p>
+
+                <p>HTML is not a programming language - it's a markup language that uses tags to define elements like headings, paragraphs, links, images, and more.</p>
+
+                <div class="highlight">
+                    <strong>Did you know?</strong> HTML was invented by Tim Berners-Lee in 1989 and has evolved through several versions. The current standard is HTML5.
+                </div>
+            </section>
+
+            <section>
+                <h2>Your First HTML Page</h2>
+                <p>To create an HTML page, you need just a text editor and a web browser. Let's create your first webpage!</p>
+
+                <h3>Step 1: Create a new file</h3>
+                <p>Create a new file and save it with a <code>.html</code> extension (e.g., <code>mypage.html</code>).</p>
+
+                <h3>Step 2: Basic HTML Structure</h3>
+                <p>Every HTML page needs this basic structure:</p>
+
+                <div class="code-example">
+<!DOCTYPE html><br>
+<html lang="en"><br>
+<head><br>
+    <meta charset="UTF-8"><br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><br>
+    <title>My First Webpage</title><br>
+</head><br>
+<body><br>
+    <h1>Hello World!</h1><br>
+    <p>This is my first HTML page.</p><br>
+</body><br>
+</html>
+                </div>
+
+                <h3>Step 3: Save and Open</h3>
+                <p>Save the file and open it in any web browser. You'll see "Hello World!" as a heading!</p>
+            </section>
+
+            <section>
+                <h2>Understanding HTML Structure</h2>
+                <p>Let's break down what each part does:</p>
+
+                <ul>
+                    <li><strong><!DOCTYPE html></strong> - Declares this is an HTML5 document</li>
+                    <li><strong><html></strong> - The root element of the HTML page</li>
+                    <li><strong><head></strong> - Contains meta-information and links to stylesheets/scripts</li>
+                    <li><strong><meta></strong> - Defines metadata like charset and viewport</li>
+                    <li><strong><title></strong> - Sets the page title (shown in browser tab)</li>
+                    <li><strong><body></strong> - Contains the visible content of the page</li>
+                </ul>
+
+                <div class="highlight">
+                    <strong>Important:</strong> HTML tags usually come in pairs: opening tag <tag> and closing tag </tag>. Some tags are self-closing.
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercise</h2>
+                <ol>
+                    <li>Create a new HTML file</li>
+                    <li>Add the basic structure shown above</li>
+                    <li>Change the title to "My Practice Page"</li>
+                    <li>Add a heading that says "Welcome to HTML!"</li>
+                    <li>Add a paragraph about yourself</li>
+                    <li>Save and open it in a browser</li>
+                </ol>
+
+                <p><strong>Tip:</strong> You can right-click on the file and select "Open with" your browser, or drag and drop the file into a browser window.</p>
+            </section>
+
+            <div class="back-to-tutorial">
+                <a href="index.html">← Back to Tutorial Home</a>
+            </div>
+
+            <div class="navigation">
+                <span class="nav-btn disabled">Previous Chapter</span>
+                <a href="chapter2.html" class="nav-btn">Next Chapter →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

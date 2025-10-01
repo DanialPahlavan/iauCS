@@ -3,571 +3,870 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Cheatsheet</title>
+    <title>Comprehensive HTML Cheatsheet</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1, h2 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        p { line-height: 1.6; }
-        ul { margin: 10px 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #764ba2;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        tr:hover {
+            background: #f8f9ff;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            font-size: 0.9em;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-html5 {
+            background: #e44d26;
+            color: white;
+        }
+        .badge-legacy {
+            background: #6c757d;
+            color: white;
+        }
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .example {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
-    <h1>HTML Cheatsheet</h1>
-    <p>This cheatsheet provides a quick reference for common HTML tags, their purposes, and whether they are specific to HTML5 or available in earlier versions (e.g., HTML4 or prior).</p>
+    <div class="container">
+        <header>
+            <h1>📚 Comprehensive HTML Cheatsheet</h1>
+            <p>Your complete reference guide to HTML tags, attributes, and best practices</p>
+        </header>
 
-    <h2>Document Structure</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;!DOCTYPE html&gt;</code></td>
-            <td>Declares the document type as HTML5. Must be the first line of the document.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;html&gt;</code></td>
-            <td>Root element of an HTML page, contains all other elements.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;head&gt;</code></td>
-            <td>Contains metadata, links to stylesheets, scripts, and other resources.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;body&gt;</code></td>
-            <td>Contains the visible content of the webpage, such as text, images, and media.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;meta&gt;</code></td>
-            <td>Defines metadata like character set, viewport settings, or page description.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;title&gt;</code></td>
-            <td>Sets the title of the webpage, displayed in the browser tab.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;link&gt;</code></td>
-            <td>Links external resources like CSS files to the HTML document.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;script&gt;</code></td>
-            <td>Embeds or links to JavaScript code.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;style&gt;</code></td>
-            <td>Embeds CSS styles directly in the HTML document.</td>
-            <td>No</td>
-        </tr>
+        <div class="content">
+            <h2>📄 Document Structure</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Common Attributes</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                    <td>Declares the document type as HTML5. Must be the first line.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;html&gt;</code></td>
+                    <td>Root element containing all other elements.</td>
+                    <td><code>lang</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;head&gt;</code></td>
+                    <td>Contains metadata, links to stylesheets, and scripts.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;body&gt;</code></td>
+                    <td>Contains the visible content of the webpage.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta&gt;</code></td>
+                    <td>Defines metadata like charset, viewport, and description.</td>
+                    <td><code>charset</code>, <code>name</code>, <code>content</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;title&gt;</code></td>
+                    <td>Sets the page title displayed in browser tab.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;link&gt;</code></td>
+                    <td>Links external resources like CSS files.</td>
+                    <td><code>rel</code>, <code>href</code>, <code>type</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;script&gt;</code></td>
+                    <td>Embeds or references JavaScript code.</td>
+                    <td><code>src</code>, <code>type</code>, <code>defer</code>, <code>async</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;style&gt;</code></td>
+                    <td>Contains internal CSS styles.</td>
+                    <td><code>type</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+            </table>
+
+
+
+            <h2>📝 Headings & Text</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td>
+                    <td>Headings from largest (h1) to smallest (h6). Use only one h1 per page.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;p&gt;</code></td>
+                    <td>Defines a paragraph of text.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;br&gt;</code></td>
+                    <td>Inserts a line break (self-closing tag).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;hr&gt;</code></td>
+                    <td>Creates a thematic break / horizontal rule.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;strong&gt;</code></td>
+                    <td>Indicates strong importance (typically bold).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;em&gt;</code></td>
+                    <td>Indicates emphasis (typically italic).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;b&gt;</code></td>
+                    <td>Bold text without semantic importance.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;i&gt;</code></td>
+                    <td>Italic text without semantic emphasis.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;u&gt;</code></td>
+                    <td>Underlined text (use sparingly).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;mark&gt;</code></td>
+                    <td>Highlighted/marked text.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;small&gt;</code></td>
+                    <td>Smaller text, often for fine print.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;del&gt;</code></td>
+                    <td>Deleted/removed text (strikethrough).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;ins&gt;</code></td>
+                    <td>Inserted/added text (underlined).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;sub&gt;</code></td>
+                    <td>Subscript text (H₂O).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;sup&gt;</code></td>
+                    <td>Superscript text (x²).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;code&gt;</code></td>
+                    <td>Inline code snippet.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;pre&gt;</code></td>
+                    <td>Preformatted text (preserves whitespace).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;kbd&gt;</code></td>
+                    <td>Keyboard input.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;samp&gt;</code></td>
+                    <td>Sample output from a program.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;var&gt;</code></td>
+                    <td>Variable in mathematical expression or code.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+            </table>
+
+            <h2>🔗 Links & Navigation</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Common Attributes</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;a&gt;</code></td>
+                    <td>Creates a hyperlink.</td>
+                    <td><code>href</code>, <code>target</code>, <code>rel</code>, <code>download</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;nav&gt;</code></td>
+                    <td>Navigation section containing links.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use <code>target="_blank"</code> with <code>rel="noopener noreferrer"</code> for security when opening links in new tabs.
+            </div>
+
+            <h2>📋 Lists</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;ul&gt;</code></td>
+                    <td>Unordered (bulleted) list.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;ol&gt;</code></td>
+                    <td>Ordered (numbered) list.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;li&gt;</code></td>
+                    <td>List item within ul or ol.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;dl&gt;</code></td>
+                    <td>Description list.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;dt&gt;</code></td>
+                    <td>Term in a description list.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;dd&gt;</code></td>
+                    <td>Description/definition in a description list.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+            </table>
+
+            <h2>🖼️ Images & Media</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Common Attributes</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;img&gt;</code></td>
+                    <td>Embeds an image (self-closing).</td>
+                    <td><code>src</code>, <code>alt</code>, <code>width</code>, <code>height</code>, <code>loading</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;picture&gt;</code></td>
+                    <td>Container for multiple image sources (responsive images).</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;audio&gt;</code></td>
+                    <td>Embeds audio content.</td>
+                    <td><code>src</code>, <code>controls</code>, <code>autoplay</code>, <code>loop</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;video&gt;</code></td>
+                    <td>Embeds video content.</td>
+                    <td><code>src</code>, <code>controls</code>, <code>width</code>, <code>height</code>, <code>poster</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;source&gt;</code></td>
+                    <td>Specifies multiple media sources for audio/video.</td>
+                    <td><code>src</code>, <code>type</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;track&gt;</code></td>
+                    <td>Specifies text tracks (subtitles) for video.</td>
+                    <td><code>src</code>, <code>kind</code>, <code>srclang</code>, <code>label</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;figure&gt;</code></td>
+                    <td>Groups media with a caption.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;figcaption&gt;</code></td>
+                    <td>Caption for a figure element.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+            </table>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Always include the <code>alt</code> attribute on images for accessibility!
+            </div>
+
+            <h2>📊 Tables</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;table&gt;</code></td>
+                    <td>Defines a table.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;thead&gt;</code></td>
+                    <td>Groups header content in a table.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;tbody&gt;</code></td>
+                    <td>Groups body content in a table.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;tfoot&gt;</code></td>
+                    <td>Groups footer content in a table.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;tr&gt;</code></td>
+                    <td>Defines a table row.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;th&gt;</code></td>
+                    <td>Defines a header cell (bold, centered by default).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;td&gt;</code></td>
+                    <td>Defines a data cell.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;caption&gt;</code></td>
+                    <td>Table caption (appears above table).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;colgroup&gt;</code></td>
+                    <td>Groups columns for styling.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;col&gt;</code></td>
+                    <td>Specifies column properties.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+            </table>
+
+            <h2>📝 Forms & Input</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Common Attributes</th>
+                    <th>Version</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;form&gt;</code></td>
+                    <td>Creates a form for user input.</td>
+                    <td><code>action</code>, <code>method</code>, <code>enctype</code>, <code>novalidate</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input&gt;</code></td>
+                    <td>Input field (various types).</td>
+                    <td><code>type</code>, <code>name</code>, <code>value</code>, <code>placeholder</code>, <code>required</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;textarea&gt;</code></td>
+                    <td>Multi-line text input.</td>
+                    <td><code>rows</code>, <code>cols</code>, <code>placeholder</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;button&gt;</code></td>
+                    <td>Clickable button.</td>
+                    <td><code>type</code>, <code>name</code>, <code>value</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;select&gt;</code></td>
+                    <td>Dropdown menu.</td>
+                    <td><code>name</code>, <code>multiple</code>, <code>size</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;option&gt;</code></td>
+                    <td>Option in a select element.</td>
+                    <td><code>value</code>, <code>selected</code>, <code>disabled</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;optgroup&gt;</code></td>
+                    <td>Groups options in a select element.</td>
+                    <td><code>label</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;label&gt;</code></td>
+                    <td>Label for form controls (improves accessibility).</td>
+                    <td><code>for</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;fieldset&gt;</code></td>
+                    <td>Groups related form elements.</td>
+                    <td><code>disabled</code></td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;legend&gt;</code></td>
+                    <td>Caption for a fieldset.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;datalist&gt;</code></td>
+                    <td>Predefined options for input autocomplete.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;output&gt;</code></td>
+                    <td>Result of a calculation or user action.</td>
+                    <td><code>for</code>, <code>name</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;progress&gt;</code></td>
+                    <td>Progress bar.</td>
+                    <td><code>value</code>, <code>max</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meter&gt;</code></td>
+                    <td>Scalar measurement within a range.</td>
+                    <td><code>value</code>, <code>min</code>, <code>max</code>, <code>low</code>, <code>high</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+            </table>
+
+            <h3>Input Types</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>HTML5?</th>
+                </tr>
+                <tr>
+                    <td><code>text</code></td>
+                    <td>Single-line text (default).</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>password</code></td>
+                    <td>Masked password input.</td>
+                    <td><span class="badge badge-legacy">Legacy</span></td>
+                </tr>
+                <tr>
+                    <td><code>email</code></td>
+                    <td>Email address with validation.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>url</code></td>
+                    <td>URL with validation.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>tel</code></td>
+                    <td>Telephone number.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>number</code></td>
+                    <td>Numeric input with spinner.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>range</code></td>
+                    <td>Slider for numeric range.</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>date</code></td>
+                    <td>Date picker (YYYY-MM-DD).</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>time</code></td>
+                    <td>Time picker (HH:MM).</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>datetime-local</code></td>
+                    <td>Date and time picker (no timezone).</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+<tr>
+    <td><code>month</code></td>
+    <td>Month and year picker.</td>
+    <td><span class="badge badge-html5">HTML5</span></td>
+</tr>
+<tr>
+    <td><code>week</code></td>
+    <td>Week picker.</td>
+    <td><span class="badge badge-html5">HTML5</span></td>
+</tr>
+<tr>
+    <td><code>color</code></td>
+    <td>Color picker input.</td>
+    <td><span class="badge badge-html5">HTML5</span></td>
+</tr>
+<tr>
+    <td><code>search</code></td>
+    <td>Input for search terms.</td>
+    <td><span class="badge badge-html5">HTML5</span></td>
+</tr>
+<tr>
+    <td><code>file</code></td>
+    <td>File upload input.</td>
+    <td><span class="badge badge-legacy">Legacy</span></td>
+</tr>
+<tr>
+    <td><code>checkbox</code></td>
+    <td>Boolean checkbox.</td>
+    <td><span class="badge badge-legacy">Legacy</span></td>
+</tr>
+<tr>
+    <td><code>radio</code></td>
+    <td>Radio button for mutually exclusive choices.</td>
+    <td><span class="badge badge-legacy">Legacy</span></td>
+</tr>
+<tr>
+    <td><code>submit</code></td>
+    <td>Submit button to send form data.</td>
+    <td><span class="badge badge-legacy">Legacy</span></td>
+</tr>
+<tr>
+    <td><code>reset</code></td>
+    <td>Reset button to clear form fields.</td>
+    <td><span class="badge badge-legacy">Legacy</span></td>
+</tr>
     </table>
-    <p><em>*Note: <code>&lt;meta&gt;</code> is not new to HTML5, but HTML5 introduced new attributes like <code>charset</code> and viewport settings.</em></p>
+<h2>🏷️ Semantic Elements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Common Attributes</th>
+                    <th>Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Represents an independent, self-contained piece of content that can be distributed or reused.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;aside&gt;</code></td>
+                    <td>Content loosely related to the main content, often used for sidebars.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;main&gt;</code></td>
+                    <td>Represents the main content of the document, unique to each page.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;section&gt;</code></td>
+                    <td>Defines a thematic grouping of content, usually with a heading.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;header&gt;</code></td>
+                    <td>Header section typically containing introductory content or navigation.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;footer&gt;</code></td>
+                    <td>Footer section, often containing copyright or contact info.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;details&gt;</code></td>
+                    <td>Toggleable widget for showing/hiding additional information.</td>
+                    <td><code>open</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;summary&gt;</code></td>
+                    <td>Defines a visible heading for a <code>&lt;details&gt;</code> element.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;figure&gt;</code></td>
+                    <td>Groups media (image, video, etc.) with optional caption.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;figcaption&gt;</code></td>
+                    <td>Caption for a <code>&lt;figure&gt;</code> element.</td>
+                    <td>—</td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;time&gt;</code></td>
+                    <td>Represents a specific period in time or a date/time value.</td>
+                    <td><code>datetime</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;dialog&gt;</code></td>
+                    <td>Defines a dialog box or modal window.</td>
+                    <td><code>open</code></td>
+                    <td><span class="badge badge-html5">HTML5</span></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h2>Headings</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td>
-            <td>Defines headings, with <code>&lt;h1&gt;</code> being the largest/most important and <code>&lt;h6&gt;</code> the smallest/least important.</td>
-            <td>No</td>
-        </tr>
-    </table>
+        <h2>Comments and Best Practices</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML Comments</td>
+                    <td>Use to add notes that are not displayed in the browser. Comments help document code but do not affect rendering.</td>
+                </tr>
+                <tr>
+                    <td>Semantic HTML</td>
+                    <td>Use appropriate semantic tags (e.g., <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>) for better accessibility, SEO, and maintainability.</td>
+                </tr>
+                <tr>
+                    <td>Validation</td>
+                    <td>Validate HTML using tools like the W3C Markup Validator to ensure standards compliance.</td>
+                </tr>
+                <tr>
+                    <td>Accessibility</td>
+                    <td>Include alt text for images, use <code>&lt;label&gt;</code> for form controls, and consider screen readers.</td>
+                </tr>
+                <tr>
+                    <td>Avoid Deprecated Tags</td>
+                    <td>Do not use tags like <code>&lt;font&gt;</code> or <code>&lt;center&gt;</code>; use CSS instead.</td>
+                </tr>
+                <tr>
+                    <td>Progressive Enhancement</td>
+                    <td>Build for the lowest common denominator first, then add enhancements.</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h2>Text Formatting</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;p&gt;</code></td>
-            <td>Defines a paragraph of text.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;strong&gt;</code></td>
-            <td>Indicates strong importance, typically displayed as bold text.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;em&gt;</code></td>
-            <td>Indicates emphasized text, typically displayed as italicized text.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;b&gt;</code></td>
-            <td>Displays text in bold (presentational, use <code>&lt;strong&gt;</code> for semantic emphasis).</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;i&gt;</code></td>
-            <td>Displays text in italics (presentational, use <code>&lt;em&gt;</code> for semantic emphasis).</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;u&gt;</code></td>
-            <td>Underlines text (use with caution, as it may confuse users with links).</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;mark&gt;</code></td>
-            <td>Highlights text for reference or emphasis.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;small&gt;</code></td>
-            <td>Displays smaller text, often for fine print or disclaimers.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;del&gt;</code></td>
-            <td>Indicates deleted text, typically displayed with a strikethrough.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;ins&gt;</code></td>
-            <td>Indicates inserted text, typically underlined.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;sub&gt;</code></td>
-            <td>Defines subscript text, e.g., for chemical formulas (H₂O).</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;sup&gt;</code></td>
-            <td>Defines superscript text, e.g., for exponents (x²).</td>
-            <td>No</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;u&gt;</code> and <code>&lt;small&gt;</code> were deprecated in HTML4 but redefined with semantic meaning in HTML5.</em></p>
+        <h2>Notes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Attributes</td>
+                    <td>Most tags support global attributes like <code>id</code>, <code>class</code>, <code>style</code>, <code>title</code>, and event handlers (e.g., <code>onclick</code>). HTML5 introduced new attributes like <code>data-*</code>, <code>hidden</code>, and <code>required</code>.</td>
+                </tr>
+                <tr>
+                    <td>Semantic HTML</td>
+                    <td>HTML5 emphasizes semantic tags (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, etc.) for better accessibility and SEO.</td>
+                </tr>
+                <tr>
+                    <td>Accessibility</td>
+                    <td>Always include <code>alt</code> attributes for <code>&lt;img&gt;</code> and associate <code>&lt;label&gt;</code> with form controls.</td>
+                </tr>
+                <tr>
+                    <td>HTML5-Specific Features</td>
+                    <td>HTML5 introduced new input types (e.g., <code>email</code>, <code>date</code>), APIs (e.g., Geolocation, Web Storage), and improved multimedia support.</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h2>Links and Navigation</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;a&gt;</code></td>
-            <td>Creates a hyperlink to another page, file, or anchor. Uses <code>href</code> attribute for the destination.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;nav&gt;</code></td>
-            <td>Defines a navigation section, typically for menus or links.</td>
-            <td>Yes</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;a&gt;</code> is not new, but HTML5 added attributes like <code>download</code> and <code>ping</code>.</em></p>
-
-    <h2>Lists</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;ul&gt;</code></td>
-            <td>Creates an unordered (bulleted) list.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;ol&gt;</code></td>
-            <td>Creates an ordered (numbered) list.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;li&gt;</code></td>
-            <td>Defines a list item within <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;dl&gt;</code></td>
-            <td>Defines a description list.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;dt&gt;</code></td>
-            <td>Defines a term in a description list.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;dd&gt;</code></td>
-            <td>Provides the description for a term in a description list.</td>
-            <td>No</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;ol&gt;</code> supports new HTML5 attributes like <code>reversed</code>.</em></p>
-
-    <h2>Images and Media</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;img&gt;</code></td>
-            <td>Embeds an image. Requires <code>src</code> for the image path and <code>alt</code> for accessibility.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;audio&gt;</code></td>
-            <td>Embeds audio content with controls for playback.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;video&gt;</code></td>
-            <td>Embeds video content with controls for playback.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;source&gt;</code></td>
-            <td>Specifies media sources for <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code> elements.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;figure&gt;</code></td>
-            <td>Groups media (e.g., images) with a caption.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;figcaption&gt;</code></td>
-            <td>Defines a caption for a <code>&lt;figure&gt;</code> element.</td>
-            <td>Yes</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;img&gt;</code> is not new, but HTML5 added attributes like <code>srcset</code> for responsive images.</em></p>
-
-    <h2>Tables</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;table&gt;</code></td>
-            <td>Defines a table to display data in rows and columns.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;tr&gt;</code></td>
-            <td>Defines a table row.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;th&gt;</code></td>
-            <td>Defines a table header cell, typically bold and centered.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;td&gt;</code></td>
-            <td>Defines a table data cell.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;thead&gt;</code></td>
-            <td>Groups header content in a table.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;tbody&gt;</code></td>
-            <td>Groups body content in a table.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;tfoot&gt;</code></td>
-            <td>Groups footer content in a table.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;caption&gt;</code></td>
-            <td>Defines a table caption, typically displayed above the table.</td>
-            <td>No</td>
-        </tr>
-    </table>
-
-    <h2>Forms</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;form&gt;</code></td>
-            <td>Creates a form for user input, with attributes like <code>action</code> and <code>method</code>.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;input&gt;</code></td>
-            <td>Defines an input field (e.g., text, checkbox, radio, submit).</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;textarea&gt;</code></td>
-            <td>Creates a multi-line text input area.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;button&gt;</code></td>
-            <td>Defines a clickable button, often used for form submission.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;select&gt;</code></td>
-            <td>Creates a dropdown menu.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;option&gt;</code></td>
-            <td>Defines an option within a <code>&lt;select&gt;</code> element.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;label&gt;</code></td>
-            <td>Associates a label with a form control, improving accessibility.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;fieldset&gt;</code></td>
-            <td>Groups related form elements together.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;legend&gt;</code></td>
-            <td>Provides a caption for a <code>&lt;fieldset&gt;</code>.</td>
-            <td>No</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;form&gt;</code> and <code>&lt;input&gt;</code> support new HTML5 attributes and input types (e.g., <code>email</code>, <code>date</code>, <code>range</code>).</em></p>
-
-    <h2>Semantic Elements</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;header&gt;</code></td>
-            <td>Defines a header section, often containing logos, titles, or navigation.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;footer&gt;</code></td>
-            <td>Defines a footer section, often containing contact info or copyright.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;main&gt;</code></td>
-            <td>Represents the main content of the document.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;article&gt;</code></td>
-            <td>Defines independent, self-contained content, like a blog post.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;section&gt;</code></td>
-            <td>Defines a thematic grouping of content.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;aside&gt;</code></td>
-            <td>Defines content indirectly related to the main content, like sidebars.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;details&gt;</code></td>
-            <td>Creates a disclosure widget that can be toggled to show/hide content.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;summary&gt;</code></td>
-            <td>Defines a summary or heading for a <code>&lt;details&gt;</code> element.</td>
-            <td>Yes</td>
-        </tr>
-    </table>
-
-    <h2>Inline and Block Elements</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;div&gt;</code></td>
-            <td>A block-level container for grouping elements.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;span&gt;</code></td>
-            <td>An inline container for styling or scripting small portions of text.</td>
-            <td>No</td>
-        </tr>
-    </table>
-
-    <h2>Embedded Content</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;iframe&gt;</code></td>
-            <td>Embeds another HTML page or content within the current page.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;embed&gt;</code></td>
-            <td>Embeds external content, like multimedia, at a specified point.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;object&gt;</code></td>
-            <td>Embeds external resources, such as PDFs or plugins.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;canvas&gt;</code></td>
-            <td>Provides a space for drawing graphics via JavaScript.</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td><code>&lt;svg&gt;</code></td>
-            <td>Embeds scalable vector graphics directly in HTML.</td>
-            <td>Yes</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code>, and <code>&lt;object&gt;</code> are not new, but HTML5 enhanced their functionality (e.g., <code>&lt;iframe&gt;</code> supports <code>sandbox</code>).</em></p>
-
-    <h2>Metadata and Scripting</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;base&gt;</code></td>
-            <td>Specifies the base URL for all relative URLs in the document.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;noscript&gt;</code></td>
-            <td>Defines content to display if JavaScript is disabled.</td>
-            <td>No</td>
-        </tr>
-    </table>
-
-    <h2>Other Tags</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;br&gt;</code></td>
-            <td>Inserts a line break.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;hr&gt;</code></td>
-            <td>Creates a horizontal rule (line) to separate content.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;abbr&gt;</code></td>
-            <td>Defines an abbreviation or acronym, with optional <code>title</code> attribute.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;address&gt;</code></td>
-            <td>Indicates contact information for a person or organization.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;cite&gt;</code></td>
-            <td>Defines the title of a work, like a book or movie.</td>
-            <td>No*</td>
-        </tr>
-        <tr>
-            <td><code>&lt;blockquote&gt;</code></td>
-            <td>Indicates a long quotation, often indented.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;q&gt;</code></td>
-            <td>Defines a short inline quotation.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;code&gt;</code></td>
-            <td>Displays inline code snippets.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;pre&gt;</code></td>
-            <td>Displays preformatted text, preserving whitespace and line breaks.</td>
-            <td>No</td>
-        </tr>
-    </table>
-    <p><em>*Note: <code>&lt;hr&gt;</code> and <code>&lt;cite&gt;</code> have redefined semantic meanings in HTML5.</em></p>
-
-    <h2>Deprecated Tags (Avoid in Modern HTML)</h2>
-    <table>
-        <tr>
-            <th>Tag</th>
-            <th>Description</th>
-            <th>HTML5?</th>
-        </tr>
-        <tr>
-            <td><code>&lt;font&gt;</code></td>
-            <td>Deprecated; use CSS for font styling.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;center&gt;</code></td>
-            <td>Deprecated; use CSS for centering content.</td>
-            <td>No</td>
-        </tr>
-        <tr>
-            <td><code>&lt;strike&gt;</code></td>
-            <td>Deprecated; use <code>&lt;del&gt;</code> or CSS for strikethrough.</td>
-            <td>No</td>
-        </tr>
-    </table>
-
-    <h2>Notes</h2>
-    <ul>
-        <li><strong>Attributes</strong>: Most tags support global attributes like <code>id</code>, <code>class</code>, <code>style</code>, <code>title</code>, and event handlers (e.g., <code>onclick</code>). HTML5 introduced new attributes like <code>data-*</code>, <code>hidden</code>, and <code>required</code>.</li>
-        <li><strong>Semantic HTML</strong>: HTML5 emphasizes semantic tags (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, etc.) for better accessibility and SEO.</li>
-        <li><strong>Accessibility</strong>: Always include <code>alt</code> attributes for <code>&lt;img&gt;</code> and associate <code>&lt;label&gt;</code> with form controls.</li>
-        <li><strong>HTML5-Specific Features</strong>: HTML5 introduced new input types (e.g., <code>email</code>, <code>date</code>), APIs (e.g., Geolocation, Web Storage), and improved multimedia support.</li>
-    </ul>
-</body>
+        <footer>
+            <p>&copy; 2025 HTML Cheatsheet. All rights reserved.</p>
+        </footer>
+    </body>
 </html>

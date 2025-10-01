@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Links and Images</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: calc(100vh - 40px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .chapter-info {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 20px 40px;
+        }
+        .content h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+        .content h3 {
+            color: #764ba2;
+            margin: 20px 0 10px;
+        }
+        .content p {
+            margin: 15px 0;
+        }
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .content li {
+            margin: 8px 0;
+        }
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+        .back-to-tutorial {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-to-tutorial a {
+            color: #764ba2;
+            text-decoration: none;
+        }
+        .back-to-tutorial a:hover {
+            text-decoration: underline;
+        }
+        .example-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chapter 3: Links and Images</h1>
+            <div class="chapter-info">Learn how to create hyperlinks and add images to your pages</div>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>Creating Links</h2>
+                <p>The <a> (anchor) tag creates hyperlinks. The most important attribute is <code>href</code> which specifies the destination.</p>
+
+                <div class="code-example">
+<a href="https://www.google.com">Visit Google</a><br><br>
+<a href="about.html">About Page</a><br><br>
+<a href="#section1">Jump to Section 1</a><br><br>
+<a href="mailto:student@email.com">Email Us</a>
+                </div>
+
+                <h3>Common Link Attributes</h3>
+                <ul>
+                    <li><strong>href</strong> - The destination URL</li>
+                    <li><strong>target="_blank"</strong> - Opens link in new tab/window</li>
+                    <li><strong>rel="noopener noreferrer"</strong> - Security best practice for external links</li>
+                    <li><strong>title</strong> - Tooltip text when hovering</li>
+                </ul>
+
+                <div class="code-example">
+<a href="https://github.com" target="_blank" rel="noopener noreferrer"><br>
+    View on GitHub<br>
+</a>
+                </div>
+            </section>
+
+            <section>
+                <h2>Adding Images</h2>
+                <p>The <img> tag embeds images. It's self-closing and requires at least the <code>src</code> attribute.</p>
+
+                <div class="code-example">
+<img src="images/logo.png" alt="Company Logo"><br><br>
+<img src="https://example.com/photo.jpg" alt="Example Photo" width="300" height="200">
+                </div>
+
+                <h3>Important Image Attributes</h3>
+                <ul>
+                    <li><strong>src</strong> - Image file path or URL</li>
+                    <li><strong>alt</strong> - Alternative text (required for accessibility)</li>
+                    <li><strong>width/height</strong> - Size in pixels</li>
+                    <li><strong>loading="lazy"</strong> - Load image only when needed</li>
+                </ul>
+
+                <div class="highlight">
+                    <strong>Accessibility Rule:</strong> Always include meaningful <code>alt</code> text that describes the image for screen readers and when images fail to load.
+                </div>
+
+                <p>Example: For a photo of a cat, use <code>alt="Orange tabby cat sleeping on windowsill"</code> instead of just <code>alt="Cat"</code>.</p>
+            </section>
+
+            <section>
+                <h2>Image Formats</h2>
+                <p>Common web image formats:</p>
+                <ul>
+                    <li><strong>JPEG/JPG</strong> - Best for photos (lossy compression)</li>
+                    <li><strong>PNG</strong> - Best for graphics with transparency</li>
+                    <li><strong>GIF</strong> - Animated images (limited colors)</li>
+                    <li><strong>WebP</strong> - Modern format with better compression</li>
+                    <li><strong>SVG</strong> - Vector graphics (scalable, no pixelation)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Grouping Images with Captions</h2>
+                <p>Use <figure> and <figcaption> to group media with captions:</p>
+
+                <div class="code-example">
+<figure><br>
+    <img src="sunset.jpg" alt="Beautiful sunset over mountains"><br>
+    <figcaption>A stunning sunset captured during our hike.</figcaption><br>
+</figure>
+                </div>
+
+                <p>This creates a semantic relationship between the image and its caption.</p>
+            </section>
+
+            <section>
+                <h2>Responsive Images</h2>
+                <p>For different screen sizes, use the <picture> element:</p>
+
+                <div class="code-example">
+<picture><br>
+    <source media="(min-width: 768px)" srcset="large.jpg"><br>
+    <source media="(min-width: 480px)" srcset="medium.jpg"><br>
+    <img src="small.jpg" alt="Responsive image"><br>
+</picture>
+                </div>
+
+                <p>The browser chooses the appropriate image based on screen size and device capabilities.</p>
+            </section>
+
+            <section>
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Optimize images for web (reduce file size without losing quality)</li>
+                    <li>Use descriptive filenames (logo.png instead of img123.png)</li>
+                    <li>Always include alt text for accessibility</li>
+                    <li>Use relative paths for images in your project</li>
+                    <li>Consider image lazy loading for better performance</li>
+                    <li>Test all links to ensure they work</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Practice Exercise</h2>
+                <p>Create a page with the following:</p>
+                <ol>
+                    <li>A link to your favorite website that opens in a new tab</li>
+                    <li>An image with proper alt text</li>
+                    <li>A thumbnail image that links to a larger version</li>
+                    <li>An image grouped with a caption using figure/figcaption</li>
+                    <li>Navigation links to your other HTML pages</li>
+                </ol>
+
+                <p><strong>Tip:</strong> If you don't have images, you can use placeholder services like Lorem Picsum (https://picsum.photos/) for testing.</p>
+            </section>
+
+            <div class="back-to-tutorial">
+                <a href="index.html">← Back to Tutorial Home</a>
+            </div>
+
+            <div class="navigation">
+                <a href="chapter2.html" class="nav-btn">← Previous Chapter</a>
+                <a href="chapter4.html" class="nav-btn">Next Chapter →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
