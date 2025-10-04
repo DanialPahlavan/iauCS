@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive CSS Cheatsheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #36D1DC 0%, #5B86E5 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #36D1DC 0%, #5B86E5 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        h2 {
+            color: #36D1DC;
+            border-bottom: 3px solid #36D1DC;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #5B86E5;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background: linear-gradient(135deg, #36D1DC 0%, #5B86E5 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        tr:hover {
+            background: #f8f9ff;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            font-size: 0.9em;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Comprehensive CSS Cheatsheet</h1>
+            <p>Your complete reference guide to CSS selectors, properties, and concepts</p>
+        </header>
+
+        <div class="content">
+            <h2>🧱 Foundation</h2>
+
+            <h2>📜 CSS Basics</h2>
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>CSS Rule</td>
+                    <td>A CSS rule consists of a selector and a declaration block.</td>
+                    <td><code>p { color: red; }</code></td>
+                </tr>
+                <tr>
+                    <td>Selector</td>
+                    <td>The selector points to the HTML element you want to style.</td>
+                    <td><code>h1</code>, <code>.class</code>, <code>#id</code></td>
+                </tr>
+                <tr>
+                    <td>Declaration</td>
+                    <td>The declaration block contains one or more declarations separated by semicolons. Each declaration includes a CSS property name and a value, separated by a colon.</td>
+                    <td><code>color: red; font-size: 16px;</code></td>
+                </tr>
+                 <tr>
+                    <td>Comments</td>
+                    <td>Used to explain the code, and may help when you edit the source code at a later date. Comments are ignored by browsers.</td>
+                    <td><code>/* This is a CSS comment */</code></td>
+                </tr>
+            </table>
+
+            <h2>🎯 Selectors</h2>
+             <h3>Basic Selectors</h3>
+            <table>
+                <tr>
+                    <th>Selector</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>Universal selector, selects all elements.</td>
+                    <td><code>* { margin: 0; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>element</code></td>
+                    <td>Type selector, selects all elements of a given type.</td>
+                    <td><code>p { line-height: 1.5; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>.class</code></td>
+                    <td>Class selector, selects all elements with a specific class attribute.</td>
+                    <td><code>.highlight { background-color: yellow; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>#id</code></td>
+                    <td>ID selector, selects a single element with a specific id attribute.</td>
+                    <td><code>#header { font-size: 24px; }</code></td>
+                </tr>
+                 <tr>
+                    <td><code>[attribute]</code></td>
+                    <td>Attribute selector, selects elements with a specific attribute.</td>
+                    <td><code>[required] { border-color: red; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>[attribute=value]</code></td>
+                    <td>Attribute selector, selects elements with a specific attribute and value.</td>
+                    <td><code>[type="submit"] { background-color: blue; }</code></td>
+                </tr>
+            </table>
+
+            <h3>Grouping and Combinators</h3>
+            <table>
+                 <tr>
+                    <th>Selector</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>A, B</code></td>
+                    <td>Grouping selector, selects all A and B elements.</td>
+                    <td><code>h1, h2 { color: navy; }</code></td>
+                </tr>
+                 <tr>
+                    <td><code>A B</code></td>
+                    <td>Descendant selector, selects all B elements inside an A element.</td>
+                    <td><code>div p { color: gray; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>A > B</code></td>
+                    <td>Child selector, selects all B elements that are a direct child of an A element.</td>
+                    <td><code>ul > li { list-style-type: none; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>A + B</code></td>
+                    <td>Adjacent sibling selector, selects the B element that is placed immediately after an A element.</td>
+                    <td><code>h1 + p { margin-top: 0; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>A ~ B</code></td>
+                    <td>General sibling selector, selects all B elements that are siblings of an A element.</td>
+                    <td><code>h1 ~ p { color: green; }</code></td>
+                </tr>
+            </table>
+
+            <h3>Pseudo-classes</h3>
+            <table>
+                <tr>
+                    <th>Selector</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                 <tr>
+                    <td><code>:hover</code></td>
+                    <td>Selects an element when the user hovers over it.</td>
+                    <td><code>a:hover { text-decoration: underline; }</code></td>
+                </tr>
+                 <tr>
+                    <td><code>:focus</code></td>
+                    <td>Selects an element that has focus (e.g., an input field).</td>
+                    <td><code>input:focus { border-color: blue; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>:first-child</code></td>
+                    <td>Selects the first child of its parent.</td>
+                    <td><code>li:first-child { font-weight: bold; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>:last-child</code></td>
+                    <td>Selects the last child of its parent.</td>
+                    <td><code>li:last-child { border-bottom: none; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>:nth-child(n)</code></td>
+                    <td>Selects elements based on their order within a parent. Can be a number, keyword (even, odd), or formula.</td>
+                    <td><code>tr:nth-child(even) { background-color: #f2f2f2; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>:not(selector)</code></td>
+                    <td>Selects every element that is NOT the specified selector.</td>
+                    <td><code>p:not(.special) { color: black; }</code></td>
+                </tr>
+            </table>
+
+             <h3>Pseudo-elements</h3>
+            <table>
+                <tr>
+                    <th>Selector</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>::before</code></td>
+                    <td>Inserts content before the content of an element.</td>
+                    <td><code>p::before { content: "Note: "; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>::after</code></td>
+                    <td>Inserts content after the content of an element.</td>
+                    <td><code>a::after { content: " »"; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>::first-letter</code></td>
+                    <td>Selects the first letter of an element.</td>
+                    <td><code>p::first-letter { font-size: 2em; }</code></td>
+                </tr>
+                <tr>
+                    <td><code>::first-line</code></td>
+                    <td>Selects the first line of an element.</td>
+                    <td><code>p::first-line { font-weight: bold; }</code></td>
+                </tr>
+            </table>
+
+
+            <h2>🖋️ Text & Font Properties</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>color</code></td>
+                    <td>Sets the color of the text.</td>
+                    <td><code>red</code>, <code>#ff0000</code>, <code>rgb(255,0,0)</code></td>
+                </tr>
+                 <tr>
+                    <td><code>font-family</code></td>
+                    <td>Specifies a prioritized list of one or more font family names.</td>
+                    <td><code>"Arial", sans-serif</code>, <code>"Times New Roman", serif</code></td>
+                </tr>
+                <tr>
+                    <td><code>font-size</code></td>
+                    <td>Sets the size of the font.</td>
+                    <td><code>16px</code>, <code>1.2em</code>, <code>120%</code>, <code>large</code></td>
+                </tr>
+                <tr>
+                    <td><code>font-weight</code></td>
+                    <td>Sets the thickness of the font.</td>
+                    <td><code>normal</code>, <code>bold</code>, <code>400</code>, <code>700</code></td>
+                </tr>
+                 <tr>
+                    <td><code>font-style</code></td>
+                    <td>Sets the style of the font (e.g., normal, italic).</td>
+                    <td><code>normal</code>, <code>italic</code>, <code>oblique</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-align</code></td>
+                    <td>Sets the horizontal alignment of text.</td>
+                    <td><code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-decoration</code></td>
+                    <td>Adds decoration to text.</td>
+                    <td><code>none</code>, <code>underline</code>, <code>overline</code>, <code>line-through</code></td>
+                </tr>
+                <tr>
+                    <td><code>line-height</code></td>
+                    <td>Sets the distance between lines of text.</td>
+                    <td><code>normal</code>, <code>1.6</code>, <code>20px</code>, <code>150%</code></td>
+                </tr>
+                 <tr>
+                    <td><code>letter-spacing</code></td>
+                    <td>Controls the space between characters.</td>
+                    <td><code>normal</code>, <code>2px</code>, <code>-1px</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-transform</code></td>
+                    <td>Controls the capitalization of text.</td>
+                    <td><code>none</code>, <code>capitalize</code>, <code>uppercase</code>, <code>lowercase</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-indent</code></td>
+                    <td>Specifies the indentation of the first line in a text-block.</td>
+                    <td><code>50px</code>, <code>2em</code>, <code>-20px</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-shadow</code></td>
+                    <td>Adds shadow to text.</td>
+                    <td><code>2px 2px 5px black</code>, <code>0 0 3px rgba(0,0,0,0.5)</code></td>
+                </tr>
+                <tr>
+                    <td><code>vertical-align</code></td>
+                    <td>Sets the vertical alignment of an element.</td>
+                    <td><code>baseline</code>, <code>middle</code>, <code>top</code>, <code>bottom</code></td>
+                </tr>
+                <tr>
+                    <td><code>white-space</code></td>
+                    <td>Specifies how white-space inside an element is handled.</td>
+                    <td><code>normal</code>, <code>nowrap</code>, <code>pre</code>, <code>pre-wrap</code>, <code>pre-line</code></td>
+                </tr>
+                <tr>
+                    <td><code>text-overflow</code></td>
+                    <td>Specifies how overflowed content that is not displayed should be signaled to the user.</td>
+                    <td><code>clip</code>, <code>ellipsis</code>, <code>"..."</code></td>
+                </tr>
+                <tr>
+                    <td><code>word-spacing</code></td>
+                    <td>Increases or decreases the white space between words.</td>
+                    <td><code>normal</code>, <code>10px</code>, <code>-2px</code></td>
+                </tr>
+            </table>
+
+            <h2>📦 Box Model</h2>
+            <div class="tip">
+                <strong>💡 Tip:</strong> The box model is a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.
+            </div>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>width</code></td>
+                    <td>Sets the width of an element.</td>
+                    <td><code>100px</code>, <code>50%</code>, <code>auto</code></td>
+                </tr>
+                 <tr>
+                    <td><code>height</code></td>
+                    <td>Sets the height of an element.</td>
+                    <td><code>100px</code>, <code>50vh</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>padding</code></td>
+                    <td>Sets the space between the content and the border. Shorthand for top, right, bottom, left.</td>
+                    <td><code>10px</code>, <code>10px 20px</code>, <code>10px 20px 30px 40px</code></td>
+                </tr>
+                <tr>
+                    <td><code>margin</code></td>
+                    <td>Sets the space outside the border, clearing an area around the element. Shorthand for top, right, bottom, left.</td>
+                    <td><code>10px</code>, <code>10px 20px</code>, <code>10px 20px 30px 40px</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>border</code></td>
+                    <td>Shorthand property to set the width, style, and color of an element's border.</td>
+                    <td><code>1px solid black</code></td>
+                </tr>
+                 <tr>
+                    <td><code>border-radius</code></td>
+                    <td>Rounds the corners of an element's outer border edge.</td>
+                    <td><code>5px</code>, <code>50%</code></td>
+                </tr>
+                <tr>
+                    <td><code>box-sizing</code></td>
+                    <td>Changes how the total width and height of an element is calculated.</td>
+                    <td><code>content-box</code>, <code>border-box</code></td>
+                </tr>
+                <tr>
+                    <td><code>box-shadow</code></td>
+                    <td>Adds shadow effects around an element's frame.</td>
+                    <td><code>2px 2px 5px black</code>, <code>inset 0 0 10px rgba(0,0,0,0.1)</code></td>
+                </tr>
+                <tr>
+                    <td><code>outline</code></td>
+                    <td>Adds an outline around elements (outside the border).</td>
+                    <td><code>1px solid blue</code>, <code>none</code></td>
+                </tr>
+                <tr>
+                    <td><code>outline-offset</code></td>
+                    <td>Sets the space between an outline and the border edge of an element.</td>
+                    <td><code>2px</code>, <code>-5px</code></td>
+                </tr>
+                <tr>
+                    <td><code>min-width</code></td>
+                    <td>Sets the minimum width of an element.</td>
+                    <td><code>100px</code>, <code>50%</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>max-width</code></td>
+                    <td>Sets the maximum width of an element.</td>
+                    <td><code>100px</code>, <code>50%</code>, <code>none</code></td>
+                </tr>
+                <tr>
+                    <td><code>min-height</code></td>
+                    <td>Sets the minimum height of an element.</td>
+                    <td><code>100px</code>, <code>50vh</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>max-height</code></td>
+                    <td>Sets the maximum height of an element.</td>
+                    <td><code>100px</code>, <code>50vh</code>, <code>none</code></td>
+                </tr>
+            </table>
+
+             <h2>🎨 Background & Colors</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>background-color</code></td>
+                    <td>Sets the background color of an element.</td>
+                    <td><code>blue</code>, <code>#0000ff</code>, <code>rgba(0,0,255,0.5)</code></td>
+                </tr>
+                 <tr>
+                    <td><code>background-image</code></td>
+                    <td>Sets one or more background images for an element.</td>
+                    <td><code>url('image.jpg')</code></td>
+                </tr>
+                <tr>
+                    <td><code>background-size</code></td>
+                    <td>Specifies the size of the background images.</td>
+                    <td><code>auto</code>, <code>cover</code>, <code>contain</code>, <code>50%</code>, <code>100px 100px</code></td>
+                </tr>
+                <tr>
+                    <td><code>background-position</code></td>
+                    <td>Specifies the initial position of a background image.</td>
+                    <td><code>center</code>, <code>top left</code>, <code>50% 50%</code></td>
+                </tr>
+                <tr>
+                    <td><code>background-repeat</code></td>
+                    <td>Sets if/how a background image will be repeated.</td>
+                    <td><code>no-repeat</code>, <code>repeat-x</code>, <code>repeat-y</code>, <code>repeat</code></td>
+                </tr>
+                <tr>
+                    <td><code>opacity</code></td>
+                    <td>Sets the opacity level for an element.</td>
+                    <td><code>0.5</code>, <code>1</code>, <code>0</code></td>
+                </tr>
+            </table>
+
+
+            <h2>📐 Layout & Positioning</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>display</code></td>
+                    <td>Specifies the display behavior of an element.</td>
+                    <td><code>block</code>, <code>inline</code>, <code>inline-block</code>, <code>flex</code>, <code>grid</code>, <code>none</code></td>
+                </tr>
+                <tr>
+                    <td><code>position</code></td>
+                    <td>Specifies the type of positioning method used for an element.</td>
+                    <td><code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code></td>
+                </tr>
+                <tr>
+                    <td><code>top</code> / <code>right</code> / <code>bottom</code> / <code>left</code></td>
+                    <td>Specifies the final position of a positioned element.</td>
+                    <td><code>10px</code>, <code>-2em</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>z-index</code></td>
+                    <td>Specifies the stack order of a positioned element.</td>
+                    <td><code>auto</code>, <code>1</code>, <code>999</code>, <code>-1</code></td>
+                </tr>
+                <tr>
+                    <td><code>float</code></td>
+                    <td>Specifies whether an element should float to the left, right, or not at all.</td>
+                    <td><code>left</code>, <code>right</code>, <code>none</code></td>
+                </tr>
+                <tr>
+                    <td><code>clear</code></td>
+                    <td>Specifies what elements can float beside the cleared element and on which side.</td>
+                    <td><code>left</code>, <code>right</code>, <code>both</code>, <code>none</code></td>
+                </tr>
+            </table>
+
+            <h3>Flexbox</h3>
+             <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description (on container)</th>
+                    <th>Example Values</th>
+                </tr>
+                 <tr>
+                    <td><code>display: flex;</code></td>
+                    <td>Defines a flex container.</td>
+                    <td>—</td>
+                </tr>
+                 <tr>
+                    <td><code>flex-direction</code></td>
+                    <td>Establishes the main-axis, thus defining the direction flex items are placed in the flex container.</td>
+                    <td><code>row</code>, <code>row-reverse</code>, <code>column</code>, <code>column-reverse</code></td>
+                </tr>
+                 <tr>
+                    <td><code>justify-content</code></td>
+                    <td>Aligns flex items along the main axis.</td>
+                    <td><code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code></td>
+                </tr>
+                <tr>
+                    <td><code>align-items</code></td>
+                    <td>Aligns flex items along the cross axis.</td>
+                    <td><code>stretch</code>, <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>baseline</code></td>
+                </tr>
+                <tr>
+                    <td><code>flex-wrap</code></td>
+                    <td>Allows flex items to wrap onto multiple lines.</td>
+                    <td><code>nowrap</code>, <code>wrap</code>, <code>wrap-reverse</code></td>
+                </tr>
+                <tr>
+                    <td><code>flex</code> (on items)</td>
+                    <td>A shorthand for <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code>.</td>
+                    <td><code>1</code>, <code>0 1 auto</code>, <code>2 0 200px</code></td>
+                </tr>
+                <tr>
+                    <td><code>flex-grow</code> (on items)</td>
+                    <td>Specifies how much a flex item will grow relative to the rest.</td>
+                    <td><code>0</code>, <code>1</code>, <code>2</code></td>
+                </tr>
+                <tr>
+                    <td><code>flex-shrink</code> (on items)</td>
+                    <td>Specifies how much a flex item will shrink relative to the rest.</td>
+                    <td><code>1</code>, <code>0</code></td>
+                </tr>
+                <tr>
+                    <td><code>flex-basis</code> (on items)</td>
+                    <td>Specifies the initial length of a flex item.</td>
+                    <td><code>200px</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>order</code> (on items)</td>
+                    <td>Specifies the order used to lay out a flex item in its flex container.</td>
+                    <td><code>1</code>, <code>-1</code>, <code>0</code></td>
+                </tr>
+                <tr>
+                    <td><code>align-self</code> (on items)</td>
+                    <td>Allows the default alignment (or the one specified by align-items) to be overridden.</td>
+                    <td><code>stretch</code>, <code>center</code>, <code>flex-start</code>, <code>flex-end</code></td>
+                </tr>
+            </table>
+
+            <h3>Grid</h3>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description (on container)</th>
+                    <th>Example Values</th>
+                </tr>
+                 <tr>
+                    <td><code>display: grid;</code></td>
+                    <td>Defines a grid container.</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><code>grid-template-columns</code></td>
+                    <td>Defines the columns of the grid.</td>
+                    <td><code>100px 100px</code>, <code>1fr 2fr</code>, <code>repeat(3, 1fr)</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-template-rows</code></td>
+                    <td>Defines the rows of the grid.</td>
+                    <td><code>100px auto</code>, <code>repeat(2, 100px)</code></td>
+                </tr>
+                <tr>
+                    <td><code>gap</code></td>
+                    <td>A shorthand for <code>row-gap</code> and <code>column-gap</code>.</td>
+                    <td><code>10px</code>, <code>10px 20px</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-column</code> (on items)</td>
+                    <td>A shorthand for <code>grid-column-start</code> and <code>grid-column-end</code>.</td>
+                    <td><code>1 / 3</code>, <code>span 2</code>, <code>auto</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-column-start</code> (on items)</td>
+                    <td>Specifies where to start displaying the item within the grid column.</td>
+                    <td><code>1</code>, <code>span 2</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-column-end</code> (on items)</td>
+                    <td>Specifies where to end displaying the item within the grid column.</td>
+                    <td><code>3</code>, <code>span 2</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-row</code> (on items)</td>
+                    <td>A shorthand for <code>grid-row-start</code> and <code>grid-row-end</code>.</td>
+                    <td><code>1 / 3</code>, <code>span 1</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-row-start</code> (on items)</td>
+                    <td>Specifies where to start displaying the item within the grid row.</td>
+                    <td><code>1</code>, <code>span 1</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-row-end</code> (on items)</td>
+                    <td>Specifies where to end displaying the item within the grid row.</td>
+                    <td><code>2</code>, <code>span 1</code></td>
+                </tr>
+                <tr>
+                    <td><code>grid-area</code> (on items)</td>
+                    <td>Either specifies a grid item's size and location within a grid layout, or establishes a named grid area.</td>
+                    <td><code>1 / 2 / 3 / 4</code>, <code>header</code></td>
+                </tr>
+                <tr>
+                    <td><code>justify-self</code> (on items)</td>
+                    <td>Aligns a grid item inside its grid area along the inline (row) axis.</td>
+                    <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+                </tr>
+                <tr>
+                    <td><code>align-self</code> (on items)</td>
+                    <td>Aligns a grid item inside its grid area along the block (column) axis.</td>
+                    <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+                </tr>
+            </table>
+
+            <h2>🎬 Transitions & Animations</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>transition</code></td>
+                    <td>A shorthand property for transitioning one or more properties between two states.</td>
+                    <td><code>all 0.3s ease</code>, <code>width 2s linear</code></td>
+                </tr>
+                <tr>
+                    <td><code>transition-property</code></td>
+                    <td>Specifies the name of the CSS property to apply the transition effect to.</td>
+                    <td><code>width</code>, <code>background-color</code>, <code>all</code></td>
+                </tr>
+                <tr>
+                    <td><code>transition-duration</code></td>
+                    <td>Specifies how many seconds or milliseconds a transition effect takes to complete.</td>
+                    <td><code>0.5s</code>, <code>200ms</code></td>
+                </tr>
+                <tr>
+                    <td><code>transition-timing-function</code></td>
+                    <td>Specifies the speed curve of the transition effect.</td>
+                    <td><code>ease</code>, <code>linear</code>, <code>ease-in-out</code>, <code>cubic-bezier(0.1,0.7,1,0.1)</code></td>
+                </tr>
+                <tr>
+                    <td><code>transition-delay</code></td>
+                    <td>Specifies when the transition effect will start.</td>
+                    <td><code>0.5s</code>, <code>100ms</code></td>
+                </tr>
+                <tr>
+                    <td><code>animation</code></td>
+                    <td>A shorthand property for animating one or more properties with keyframes.</td>
+                    <td><code>slidein 3s ease-in 1s infinite reverse both running</code></td>
+                </tr>
+                <tr>
+                    <td><code>@keyframes</code></td>
+                    <td>Defines the animation keyframes.</td>
+                    <td><code>@keyframes fade { from {opacity: 0;} to {opacity: 1;} }</code></td>
+                </tr>
+            </table>
+
+            <h2>🔄 Transforms</h2>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>Example Values</th>
+                </tr>
+                <tr>
+                    <td><code>transform</code></td>
+                    <td>Allows 2D or 3D transformation to be applied to an element.</td>
+                    <td><code>translate(50px, 100px)</code>, <code>rotate(45deg)</code>, <code>scale(1.5, 1.5)</code></td>
+                </tr>
+                <tr>
+                    <td><code>transform-origin</code></td>
+                    <td>Sets the origin for transformations performed on an element.</td>
+                    <td><code>center</code>, <code>50% 50%</code>, <code>top left</code></td>
+                </tr>
+                <tr>
+                    <td><code>perspective</code></td>
+                    <td>Defines the viewing distance of the user from the z-plane origin.</td>
+                    <td><code>300px</code>, <code>none</code></td>
+                </tr>
+                <tr>
+                    <td><code>perspective-origin</code></td>
+                    <td>Defines where the user is looking at (the origin) on the z-plane.</td>
+                    <td><code>50% 50%</code>, <code>top center</code></td>
+                </tr>
+                <tr>
+                    <td><code>backface-visibility</code></td>
+                    <td>Sets whether the back face of an element is visible when turned towards the user.</td>
+                    <td><code>visible</code>, <code>hidden</code></td>
+                </tr>
+            </table>
+
+            <h2>📱 Responsive Design</h2>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Media queries allow you to apply different styles for different devices/screens. Common breakpoints: mobile (< 768px), tablet (768px - 1024px), desktop (> 1024px).
+            </div>
+            <table>
+                <tr>
+                    <th>Property/Syntax</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>@media (max-width: 768px) { ... }</code></td>
+                    <td>Applies styles only if the viewport width is less than or equal to 768px.</td>
+                    <td><code>@media (max-width: 768px) { body { font-size: 14px; } }</code></td>
+                </tr>
+                <tr>
+                    <td><code>@media (min-width: 769px)</code></td>
+                    <td>Applies styles only if the viewport width is greater than or equal to 769px.</td>
+                    <td><code>@media (min-width: 769px) { body { font-size: 16px; } }</code></td>
+                </tr>
+                <tr>
+                    <td><code>@media screen and (orientation: landscape)</code></td>
+                    <td>Applies styles based on screen orientation.</td>
+                    <td><code>@media screen and (orientation: landscape) { div { width: 50%; } }</code></td>
+                </tr>
+                <tr>
+                    <td><code>@media print { ... }</code></td>
+                    <td>Applies styles when the document is printed.</td>
+                    <td><code>@media print { body { color: black; } }</code></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2025 CSS Cheatsheet. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
