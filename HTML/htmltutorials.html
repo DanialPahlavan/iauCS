@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>راهنمای کامل و مدرن HTML</title>
+  
+  <!-- Google Fonts (Vazirmatn for Persian) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles with Pure CSS -->
+  <style>
+    /* CSS Variables for Theming (Light & Dark Mode) */
+    :root {
+      --bg-color: #f9fafb;
+      --text-color: #1f2937;
+      --card-bg-color: #ffffff;
+      --header-bg-color: rgba(255, 255, 255, 0.9);
+      --border-color: #e5e7eb;
+      --primary-color: #4f46e5;
+      --primary-hover-color: #4338ca;
+      --secondary-text-color: #6b7280;
+      --code-bg-color: #111827;
+      --code-text-color: #e5e7eb;
+      --shadow-color: rgba(0, 0, 0, 0.07);
+    }
+
+    body.dark {
+      --bg-color: #111827;
+      --text-color: #d1d5db;
+      --card-bg-color: #1f2937;
+      --header-bg-color: rgba(31, 41, 55, 0.9);
+      --border-color: #374151;
+      --primary-color: #6366f1;
+      --primary-hover-color: #818cf8;
+      --secondary-text-color: #9ca3af;
+      --code-bg-color: #0d1117;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Basic style resets and font definition */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      scroll-behavior: smooth;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* Header & Navigation */
+    .main-header {
+      background-color: var(--header-bg-color);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 4px var(--shadow-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 1rem 0;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        white-space: nowrap;
+    }
+    .header-nav-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        overflow-x: auto;
+    }
+    .header-nav {
+        display: flex;
+    }
+    .header-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        margin-right: 1.5rem;
+        font-weight: 500;
+        transition: color 0.2s;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+     .header-nav a:hover {
+        color: var(--primary-color);
+    }
+    .dark-mode-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 9999px;
+        flex-shrink: 0;
+    }
+    .dark-mode-toggle:hover {
+        background-color: var(--border-color);
+    }
+
+    /* Main Content & Sections */
+    main {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .content-section {
+        background-color: var(--card-bg-color);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+        border: 1px solid var(--border-color);
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4 {
+        line-height: 1.3;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+     h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+       }
+    p {
+        margin-bottom: 1rem;
+    }
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    code {
+        font-family: monospace;
+        background-color: var(--border-color);
+        padding: 0.15rem 0.3rem;
+        border-radius: 0.25rem;
+    }
+
+    /* Code Blocks */
+    .code-block {
+        position: relative;
+        margin-top: 1rem;
+    }
+    .code-block pre {
+        background-color: var(--code-bg-color);
+        color: var(--code-text-color);
+        padding: 1.5rem 1rem 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        text-align: left;
+        direction: ltr;
+        font-size: 0.9rem;
+    }
+     .code-block pre code {
+        background: none;
+        padding: 0;
+       }
+    .copy-button {
+        position: absolute;
+        top: 0.8rem;
+        left: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        background-color: #374151;
+        color: #d1d5db;
+        border: none;
+        font-family: 'Vazirmatn', sans-serif;
+    }
+    .copy-button:hover {
+        background-color: #4b5563;
+    }
+    
+    /* Lists */
+    ul, ol {
+        padding-right: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+    }
+    table caption {
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.75rem;
+        color: var(--secondary-text-color);
+    }
+    th, td {
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        text-align: right;
+    }
+    thead tr, tfoot tr {
+        background-color: #f3f4f6;
+    }
+    body.dark thead tr, body.dark tfoot tr {
+        background-color: #374151;
+    }
+    tbody tr:hover {
+        background-color: #fafafa;
+    }
+    body.dark tbody tr:hover {
+        background-color: #2a3441;
+    }
+
+    /* Forms */
+    .form-container {
+        background-color: var(--bg-color);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border-color);
+    }
+    form fieldset {
+        border: none;
+    }
+    form legend {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--secondary-text-color);
+    }
+    .form-input, select, textarea, input[type="date"], input[type="color"], input[type="range"] {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: var(--card-bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 0.375rem;
+        color: var(--text-color);
+        transition: box-shadow 0.2s;
+    }
+    .form-input:focus, select:focus, textarea:focus, input[type="date"]:focus, input[type="color"]:focus, input[type="range"]:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+    }
+    .submit-btn {
+        padding: 0.75rem 2rem;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    .submit-btn:hover {
+        background-color: var(--primary-hover-color);
+    }
+    
+    /* Footer */
+    .main-footer {
+      border-top: 1px solid var(--border-color);
+      margin-top: 3rem;
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--secondary-text-color);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+        .form-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="container header-content">
+      <h1 class="header-title">آموزش HTML</h1>
+      <div class="header-nav-wrapper">
+          <nav class="header-nav">
+            <a href="#intro">مقدمه</a>
+            <a href="#structure">ساختار</a>
+            <a href="#head">بخش Head</a>
+            <a href="#content">محتوا</a>
+            <a href="#attributes">ویژگی‌ها</a>
+            <a href="#forms">فرم‌ها</a>
+            <a href="#media">رسانه و گرافیک</a>
+            <a href="#semantic">معنایی</a>
+            <a href="#entities">موجودیت‌ها</a>
+            <a href="#accessibility">دسترسی‌پذیری</a>
+            <a href="#best-practices">نکات</a>
+            <a href="#tables">جداول</a>
+            <a href="#advanced-forms">فرم‌های پیشرفته</a>
+            <a href="#embedding">جاسازی</a>
+            <a href="#validation">اعتبارسنجی</a>
+            <a href="#all-tags">تمام تگ‌ها</a>
+          </nav>
+          <!-- Dark Mode Toggle Button -->
+          <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <svg id="moonIcon" style="height: 1.5rem; width: 1.5rem; color: var(--text-color);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+              <svg id="sunIcon" style="height: 1.5rem; width: 1.5rem; color: var(--text-color); display: none;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h1 style="font-size: 2.75rem; font-weight: 800; margin-bottom: 1rem;">راهنمای جامع و مدرن HTML</h1>
+      <p style="font-size: 1.25rem; color: var(--secondary-text-color); max-width: 48rem; margin: 0 auto;">
+        یادگیری پایه‌های وب با HTML. این راهنما شما را از مفاهیم اولیه تا ساختار‌های پیشرفته همراهی می‌کند.
+      </p>
+    </div>
+      
+    <!-- Quick Stats -->
+    <div style="margin-bottom: 4rem; text-align: right; padding: 1.5rem; background-color: var(--card-bg-color); border-radius: 0.75rem; border: 1px solid var(--border-color); box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);">
+        <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 1rem; font-size: 1.1rem;">آمار این آموزش:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+          <div>📚 ۲۰+ بخش آموزشی</div>
+          <div>🏷️ ۱۰۰+ تگ پوشش داده شده</div>
+          <div>🔧 تمام ویژگی‌های استاندارد</div>
+          <div>💡 مثال‌های عملی</div>
+          <div>🌙 حالت تاریک/روشن</div>
+          <div>📋 دکمه‌های کپی کد</div>
+        </div>
+    </div>
+
+    <!-- Section: Introduction -->
+    <section id="intro" class="content-section">
+      <h2>۱. HTML چیست؟</h2>
+      <p>HTML زبان استاندارد برای ساخت صفحات وب و اسکلت اصلی هر وب‌سایتی است. این زبان به مرورگر می‌گوید که محتوا را چگونه نمایش دهد. این کار با استفاده از "تگ‌ها" (Tags) انجام می‌شود.</p>
+
+      <h3>ساده‌ترین سند HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;اولین صفحه من&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;
+  &lt;p&gt;اولین پاراگراف من در وب.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+
+      <h3>تگ‌های اصلی و کاربردی</h3>
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!-- تیترها از h1 تا h6 --&gt;
+&lt;h1&gt;تیتر اصلی&lt;/h1&gt;
+&lt;h2&gt;تیتر سطح دوم&lt;/h2&gt;
+&lt;p&gt;پاراگراف معمولی از متن.&lt;/p&gt;
+
+&lt;!-- لینک‌ها --&gt;
+&lt;a href="https://example.com"&gt;بازدید وب‌سایت&lt;/a&gt;
+
+&lt;!-- تصویر --&gt;
+&lt;img src="image.jpg" alt="توضیح تصویر"&gt;
+
+&lt;!-- لیست‌ها --&gt;
+&lt;ul&gt;
+  &lt;li&gt;آیتم اول&lt;/li&gt;
+  &lt;li&gt;آیتم دوم&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+    </section>
+
+    <!-- Section: Structure -->
+    <section id="structure" class="content-section">
+      <h2>۲. ساختار اصلی یک سند HTML</h2>
+      <p>هر فایل HTML یک ساختار استاندارد دارد که به مرورگر در درک محتوا کمک می‌کند.</p>
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+  &lt;head&gt;
+    &lt;!-- فراداده و اطلاعات صفحه اینجا قرار می‌گیرد --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- محتوای قابل مشاهده اینجا قرار می‌گیرد --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+    </section>
+    
+    <!-- Section: Head -->
+    <section id="head" class="content-section">
+        <h2>۳. بخش &lt;head&gt; و فراداده (Metadata)</h2>
+        <p>بخش <code>&lt;head&gt;</code> شامل اطلاعاتی درباره صفحه است که مستقیماً به کاربر نمایش داده نمی‌شود، اما برای مرورگرها و موتورهای جستجو بسیار مهم است.</p>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;head&gt;
+  &lt;!-- انکدینگ کاراکتر برای پشتیبانی از زبان فارسی --&gt;
+  &lt;meta charset="UTF-8"&gt;
+  
+  &lt;!-- برای طراحی واکنش‌گرا (Responsive Design) --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- توضیحات صفحه برای موتورهای جستجو (SEO) --&gt;
+  &lt;meta name="description" content="راهنمای جامع آموزش HTML برای مبتدیان."&gt;
+  
+  &lt;!-- عنوان صفحه که در تب مرورگر نمایش داده می‌شود --&gt;
+  &lt;title&gt;عنوان صفحه&lt;/title&gt;
+  
+  &lt;!-- اتصال فایل CSS خارجی --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Content -->
+    <section id="content" class="content-section">
+      <h2>۴. کار با محتوای اصلی</h2>
+      <h3>تیترها و پاراگراف‌ها</h3>
+      <p>از تگ‌های <code>&lt;h1&gt;</code> تا <code>&lt;h6&gt;</code> برای تیترها و از <code>&lt;p&gt;</code> برای پاراگراف‌ها استفاده می‌شود.</p>
+
+      <div class="code-block">
+        <pre><code class="language-html">&lt;h1&gt;این بالاترین سطح تیتر است&lt;/h1&gt;
+&lt;h2&gt;تیتر سطح دوم&lt;/h2&gt;
+&lt;h3&gt;تیتر سطح سوم&lt;/h3&gt;
+&lt;p&gt;این یک پاراگراف ساده است.&lt;/p&gt;
+&lt;p&gt;پاراگراف دوم با &lt;br&gt; شکست خط.&lt;/p&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+
+      <h3>لینک‌ها و تصاویر</h3>
+      <p>تگ <code>&lt;a&gt;</code> برای ایجاد لینک و تگ <code>&lt;img&gt;</code> برای نمایش تصاویر است.</p>
+
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!-- لینک خارجی --&gt;
+&lt;a href="https://google.com"&gt;بازدید گوگل&lt;/a&gt;
+
+&lt;!-- لینک داخلی --&gt;
+&lt;a href="#section1"&gt;برو به بخش اول&lt;/a&gt;
+
+&lt;!-- تصویر با متن جایگزین --&gt;
+&lt;img src="photo.jpg" alt="توضیح تصویر" width="300" height="200"&gt;
+
+&lt;!-- تصویر با لینک --&gt;
+&lt;a href="gallery.html"&gt;
+  &lt;img src="thumbnail.jpg" alt="گالری تصاویر"&gt;
+&lt;/a&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+
+      <h3>لیست‌ها</h3>
+      <p>برای ایجاد لیست‌های نامرتب (<code>&lt;ul&gt;</code>) و مرتب (<code>&lt;ol&gt;</code>) استفاده کنید.</p>
+
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!-- لیست نامرتب --&gt;
+&lt;ul&gt;
+  &lt;li&gt;سیب&lt;/li&gt;
+  &lt;li&gt;پرتقال&lt;/li&gt;
+  &lt;li&gt;موز&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- لیست مرتب --&gt;
+&lt;ol&gt;
+  &lt;li&gt;صبحانه بخور&lt;/li&gt;
+  &lt;li&gt;دندان‌ها را مسواک بزن&lt;/li&gt;
+  &lt;li&gt;به مدرسه برو&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- لیست تو در تو --&gt;
+&lt;ul&gt;
+  &lt;li&gt;میوه‌ها
+    &lt;ul&gt;
+      &lt;li&gt;سیب&lt;/li&gt;
+      &lt;li&gt;پرتقال&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;سبزیجات&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+
+      <h3>قالب‌بندی پیشرفته متن</h3>
+      <div style="background-color: var(--bg-color); padding: 1rem; border-radius: 0.25rem;">
+          <p>این متن <strong>مهم</strong> است و این متن <em>تأکید</em> دارد.</p>
+          <p>H<sub>2</sub>O و E = mc<sup>2</sup></p>
+          <blockquote style="border-right: 4px solid var(--border-color); padding-right: 1rem; margin-right: 1rem;">این یک نقل قول است.</blockquote>
+      </div>
+
+      <div class="code-block">
+        <pre><code class="language-html">&lt;!-- متن ضخیم و کج --&gt;
+&lt;p&gt;متن &lt;strong&gt;ضخیم&lt;/strong&gt; و &lt;em&gt;کج&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!-- زیرنویس و بالانویس --&gt;
+&lt;p&gt;فرمول آب: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;معادله: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+
+&lt;!-- نقل قول --&gt;
+&lt;blockquote&gt;
+  برنامه‌نویسی هنر تبدیل کافئین به کد است.
+&lt;/blockquote&gt;
+
+&lt;!-- خط جداکننده --&gt;
+&lt;hr&gt;
+
+&lt;!-- متن از پیش قالب‌بندی شده --&gt;
+&lt;pre&gt;
+این متن
+  قالب‌بندی
+    خود را حفظ می‌کند
+&lt;/pre&gt;</code></pre>
+        <button class="copy-button">کپی</button>
+      </div>
+    </section>
+
+    <!-- Section: Attributes -->
+    <section id="attributes" class="content-section">
+        <h2>۵. ویژگی‌ها (Attributes) در HTML</h2>
+        <p>ویژگی‌ها اطلاعات بیشتری درباره عناصر HTML ارائه می‌دهند و به صورت زوج‌های <code>نام="مقدار"</code> در تگ باز قرار می‌گیرند.</p>
+        <ul>
+            <li><code>id</code>: یک شناسه منحصر به فرد.</li>
+            <li><code>class</code>: برای گروه‌بندی و استایل‌دهی چند عنصر.</li>
+            <li><code>style</code>: برای استایل‌دهی مستقیم (inline).</li>
+            <li><code>title</code>: برای نمایش توضیحات تکمیلی (tooltip).</li>
+            <li><code>disabled</code>: یک ویژگی بولی (boolean) برای غیرفعال کردن یک عنصر ورودی.</li>
+        </ul>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;p class="highlight" id="intro-p"&gt;یک پاراگراف با کلاس و آیدی.&lt;/p&gt;
+&lt;button title="این دکمه غیرفعال است" disabled&gt;کلیک نکنید&lt;/button&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Forms -->
+    <section id="forms" class="content-section">
+        <h2>۶. فرم‌ها: از ساده تا پیشرفته</h2>
+        <p>فرم‌ها برای جمع‌آوری اطلاعات از کاربران ضروری هستند.</p>
+        <div class="form-container">
+            <form action="#" method="POST" onsubmit="event.preventDefault();">
+                <fieldset>
+                    <legend>فرم ثبت‌نام نمونه</legend>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">نام کامل</label>
+                            <input type="text" id="name" name="name" placeholder="مثلا: سارا رضایی" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ایمیل</label>
+                            <input type="email" id="email" name="email" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                           <label for="birthdate">تاریخ تولد</label>
+                           <input type="date" id="birthdate" name="birthdate" class="form-input">
+                        </div>
+                        <div class="form-group">
+                           <label for="favcolor">رنگ مورد علاقه</label>
+                           <input type="color" id="favcolor" name="favcolor" value="#4f46e5" class="form-input">
+                        </div>
+                         <div class="form-group full-width">
+                           <label for="volume">میزان رضایت</label>
+                           <input type="range" id="volume" name="volume" min="0" max="100" class="form-input">
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem; text-align: left;">
+                        <button type="submit" class="submit-btn">ارسال</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section: Media & Graphics -->
+    <section id="media" class="content-section">
+        <h2>۷. رسانه و گرافیک</h2>
+        <h3>صدا و ویدیو</h3>
+        <p>با تگ‌های <code>&lt;audio&gt;</code> و <code>&lt;video&gt;</code> می‌توانید فایل‌های چندرسانه‌ای را در صفحه خود پخش کنید.</p>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- پخش صدا --&gt;
+&lt;audio controls&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  &lt;source src="music.ogg" type="audio/ogg"&gt;
+  مرورگر شما از تگ audio پشتیبانی نمی‌کند.
+&lt;/audio&gt;
+
+&lt;!-- پخش ویدیو --&gt;
+&lt;video width="640" height="360" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  مرورگر شما از تگ video پشتیبانی نمی‌کند.
+&lt;/video&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>گرافیک وکتوری (SVG)</h3>
+        <p>SVG برای نمایش آیکون‌ها و گرافیک‌های مقیاس‌پذیر بدون افت کیفیت عالی است.</p>
+        <div style="text-align: center;">
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" stroke="var(--secondary-text-color)" stroke-width="4" fill="var(--primary-color)" />
+            </svg>
+        </div>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- آیکون SVG ساده --&gt;
+&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/&gt;
+&lt;/svg&gt;
+
+&lt;!-- دایره SVG --&gt;
+&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" stroke="#4f46e5" stroke-width="4" fill="#e5e7eb" /&gt;
+&lt;/svg&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>گرافیک پیکسلی (Canvas)</h3>
+        <p>تگ <code>&lt;canvas&gt;</code> یک بوم نقاشی برای شما فراهم می‌کند که می‌توانید با جاوااسکریپت روی آن طراحی کنید. این تگ برای بازی‌ها و گرافیک‌های پیچیده کاربرد دارد.</p>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- عنصر Canvas --&gt;
+&lt;canvas id="myCanvas" width="400" height="200" style="border:1px solid #000;"&gt;
+  مرورگر شما از Canvas پشتیبانی نمی‌کند.
+&lt;/canvas&gt;
+
+&lt;!-- JavaScript برای رسم روی Canvas (در فایل جداگانه) --&gt;
+&lt;script&gt;
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // رسم مستطیل
+  ctx.fillStyle = '#4f46e5';
+  ctx.fillRect(10, 10, 150, 100);
+
+  // رسم متن
+  ctx.font = '20px Arial';
+  ctx.fillText('سلام Canvas!', 10, 140);
+&lt;/script&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Semantic HTML -->
+    <section id="semantic" class="content-section">
+      <h2>۸. HTML معنایی (Semantic)</h2>
+      <p>استفاده از تگ‌هایی که معنای محتوا را توصیف می‌کنند، به سئو، دسترسی‌پذیری و خوانایی کد کمک می‌کند.</p>
+      <div style="max-width: 36rem; margin: 2rem auto; border: 2px dashed var(--border-color); padding: 1rem; border-radius: 0.5rem; text-align: center; font-family: monospace; direction: ltr;">
+        <div style="background-color: #e5e7eb; color: #374151; padding: 0.75rem; border-radius: 0.5rem 0.5rem 0 0;">&lt;header&gt;</div>
+        <div style="background-color: #f3f4f6; color: #4b5563; padding: 0.75rem;">&lt;nav&gt;</div>
+        <div style="padding: 0.75rem; margin: 0.5rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">&lt;main&gt;</div>
+        <div style="background-color: #f3f4f6; color: #4b5563; padding: 0.75rem;">&lt;aside&gt;</div>
+        <div style="background-color: #e5e7eb; color: #374151; padding: 0.75rem; border-radius: 0 0 0.5rem 0.5rem;">&lt;footer&gt;</div>
+      </div>
+    </section>
+
+    <!-- Section: Entities -->
+    <section id="entities" class="content-section">
+        <h2>۹. موجودیت‌ها (Entities) در HTML</h2>
+        <p>برای نمایش کاراکترهایی که در HTML رزرو شده‌اند (مانند <code>&lt;</code>)، باید از موجودیت‌ها استفاده کنید.</p>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead><tr><th>کاراکتر</th><th>موجودیت</th><th>توضیح</th></tr></thead>
+                <tbody>
+                    <tr><td>&lt;</td><td><code>&amp;lt;</code></td><td>کمتر از</td></tr>
+                    <tr><td>&gt;</td><td><code>&amp;gt;</code></td><td>بزرگتر از</td></tr>
+                    <tr><td>&amp;</td><td><code>&amp;amp;</code></td><td>علامت And</td></tr>
+                    <tr><td>"</td><td><code>&amp;quot;</code></td><td>نقل قول</td></tr>
+                    <tr><td>©</td><td><code>&amp;copy;</code></td><td>کپی‌رایت</td></tr>
+                    <tr><td>&nbsp;</td><td><code>&amp;nbsp;</code></td><td>فاصله بدون شکست خط</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- Section: Accessibility -->
+    <section id="accessibility" class="content-section">
+        <h2>۱۰. دسترسی‌پذیری وب (Accessibility)</h2>
+        <p>نوشتن HTML دسترسی‌پذیر به این معناست که وب‌سایت شما برای همه افراد، از جمله افراد دارای معلولیت، قابل استفاده باشد. این یک بخش حیاتی از توسعه وب مدرن است.</p>
+        <ul>
+            <li><strong>استفاده از HTML معنایی:</strong> ساختار درست به صفحه‌خوان‌ها کمک می‌کند.</li>
+            <li><strong>ویژگی <code>alt</code> برای تصاویر:</strong> همیشه متنی جایگزین برای تصاویر قرار دهید.</li>
+            <li><strong>برچسب برای فرم‌ها:</strong> هر ورودی در فرم باید یک برچسب (<code>&lt;label&gt;</code>) مرتبط داشته باشد.</li>
+            <li><strong>استفاده از ویژگی‌های ARIA:</strong> در موارد پیچیده، از ویژگی‌های ARIA برای توصیف نقش و وضعیت عناصر استفاده کنید.</li>
+        </ul>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- تصویر با متن جایگزین مناسب --&gt;
+&lt;img src="logo.png" alt="لوگوی شرکت ما"&gt;
+
+&lt;!-- دکمه‌ای که فقط آیکون دارد و با ARIA توصیف شده --&gt;
+&lt;button aria-label="بستن پنجره"&gt;
+  &lt;!-- SVG icon --&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Comments and Best Practices -->
+    <section id="best-practices" class="content-section">
+        <h2>۱۱. کامنت‌ها و نکات مهم</h2>
+        <h3>کامنت‌گذاری در HTML</h3>
+        <p>کامنت‌ها توسط مرورگر نمایش داده نمی‌شوند اما به شما و دیگران در درک کد کمک می‌کنند.</p>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- این یک کامنت تک خطی است --&gt;
+
+&lt;!--
+  این یک کامنت
+  چند خطی است
+  که توضیحات بیشتری ارائه می‌دهد
+--&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>نکات مهم کدنویسی (Best Practices)</h3>
+        <ul>
+            <li><strong>همیشه تگ‌ها را ببندید:</strong> این کار از خطاهای غیرمنتظره جلوگیری می‌کند.</li>
+            <li><strong>از حروف کوچک استفاده کنید:</strong> نام تگ‌ها و ویژگی‌ها را با حروف کوچک بنویسید.</li>
+            <li><strong>کد خود را مرتب کنید:</strong> از تورفتگی (Indentation) برای خوانایی بهتر استفاده کنید.</li>
+            <li><strong>از HTML معنایی استفاده کنید:</strong> برای بهبود سئو و دسترسی‌پذیری.</li>
+            <li><strong>ویژگی‌های مناسب را اضافه کنید:</strong> مانند <code>alt</code> برای تصاویر و <code>title</code> برای لینک‌ها.</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- اشتباه: تگ بسته نشده --&gt;
+&lt;p&gt;این پاراگراف بسته نشده است
+
+&lt;!-- درست: تگ بسته شده --&gt;
+&lt;p&gt;این پاراگراف درست بسته شده است.&lt;/p&gt;
+
+&lt;!-- اشتباه: حروف بزرگ --&gt;
+&lt;DIV&gt;این اشتباه است&lt;/DIV&gt;
+
+&lt;!-- درست: حروف کوچک --&gt;
+&lt;div&gt;این درست است&lt;/div&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Tables -->
+    <section id="tables" class="content-section">
+        <h2>۱۲. جداول (Tables)</h2>
+        <p>جداول برای نمایش داده‌های ساختار یافته استفاده می‌شوند.</p>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- جدول ساده --&gt;
+&lt;table&gt;
+  &lt;caption&gt;اطلاعات دانشجویان&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;نام&lt;/th&gt;
+      &lt;th&gt;سن&lt;/th&gt;
+      &lt;th&gt;رشته&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;علی&lt;/td&gt;
+      &lt;td&gt;۲۰&lt;/td&gt;
+      &lt;td&gt;کامپیوتر&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;سارا&lt;/td&gt;
+      &lt;td&gt;۱۹&lt;/td&gt;
+      &lt;td&gt;برق&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>جدول پیشرفته با rowspan و colspan</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- جدول با سلول‌های ادغام شده --&gt;
+&lt;table&gt;
+  &lt;caption&gt;برنامه درسی هفتگی&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th rowspan="2"&gt;روز&lt;/th&gt;
+      &lt;th colspan="2"&gt;صبح&lt;/th&gt;
+      &lt;th colspan="2"&gt;عصر&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;درس اول&lt;/th&gt;
+      &lt;th&gt;درس دوم&lt;/th&gt;
+      &lt;th&gt;درس اول&lt;/th&gt;
+      &lt;th&gt;درس دوم&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;شنبه&lt;/td&gt;
+      &lt;td&gt;ریاضی&lt;/td&gt;
+      &lt;td&gt;فیزیک&lt;/td&gt;
+      &lt;td&gt;شیمی&lt;/td&gt;
+      &lt;td&gt;بیولوژی&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;یک‌شنبه&lt;/td&gt;
+      &lt;td&gt;ادبیات&lt;/td&gt;
+      &lt;td&gt;تاریخ&lt;/td&gt;
+      &lt;td&gt;جغرافیا&lt;/td&gt;
+      &lt;td&gt;ورزش&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Advanced Forms -->
+    <section id="advanced-forms" class="content-section">
+        <h2>۱۳. فرم‌های پیشرفته</h2>
+        <p>فرم‌های HTML انواع مختلفی از ورودی‌ها را پشتیبانی می‌کنند.</p>
+
+        <h3>انواع ورودی‌های مختلف</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- ورودی متن --&gt;
+&lt;label for="username"&gt;نام کاربری:&lt;/label&gt;
+&lt;input type="text" id="username" name="username" required&gt;
+
+&lt;!-- ورودی ایمیل --&gt;
+&lt;label for="email"&gt;ایمیل:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required&gt;
+
+&lt;!-- ورودی گذرواژه --&gt;
+&lt;label for="password"&gt;گذرواژه:&lt;/label&gt;
+&lt;input type="password" id="password" name="password" required&gt;
+
+&lt;!-- ورودی شماره --&gt;
+&lt;label for="age"&gt;سن:&lt;/label&gt;
+&lt;input type="number" id="age" name="age" min="1" max="120"&gt;
+
+&lt;!-- ورودی تاریخ --&gt;
+&lt;label for="birthdate"&gt;تاریخ تولد:&lt;/label&gt;
+&lt;input type="date" id="birthdate" name="birthdate"&gt;
+
+&lt;!-- ورودی زمان --&gt;
+&lt;label for="meeting-time"&gt;زمان ملاقات:&lt;/label&gt;
+&lt;input type="datetime-local" id="meeting-time" name="meeting-time"&gt;
+
+&lt;!-- انتخاب چند گزینه‌ای --&gt;
+&lt;label for="country"&gt;کشور:&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value=""&gt;انتخاب کنید&lt;/option&gt;
+  &lt;option value="iran"&gt;ایران&lt;/option&gt;
+  &lt;option value="usa"&gt;آمریکا&lt;/option&gt;
+  &lt;option value="uk"&gt;انگلیس&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- چک‌باکس --&gt;
+&lt;p&gt;علاقه‌مندی‌ها:&lt;/p&gt;
+&lt;label&gt;&lt;input type="checkbox" name="interests" value="sports"&gt; ورزش&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="interests" value="music"&gt; موسیقی&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="interests" value="art"&gt; هنر&lt;/label&gt;
+
+&lt;!-- رادیو باتن --&gt;
+&lt;p&gt;جنسیت:&lt;/p&gt;
+&lt;label&gt;&lt;input type="radio" name="gender" value="male"&gt; مرد&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="gender" value="female"&gt; زن&lt;/label&gt;
+
+&lt;!-- ورودی فایل --&gt;
+&lt;label for="file-upload"&gt;انتخاب فایل:&lt;/label&gt;
+&lt;input type="file" id="file-upload" name="file-upload" accept=".jpg,.png,.pdf"&gt;
+
+&lt;!-- ورودی رنگ --&gt;
+&lt;label for="favcolor"&gt;رنگ مورد علاقه:&lt;/label&gt;
+&lt;input type="color" id="favcolor" name="favcolor" value="#4f46e5"&gt;
+
+&lt;!-- ورودی محدوده --&gt;
+&lt;label for="volume"&gt;میزان رضایت (0-100):&lt;/label&gt;
+&lt;input type="range" id="volume" name="volume" min="0" max="100" value="50"&gt;
+
+&lt;!-- ناحیه متن --&gt;
+&lt;label for="message"&gt;پیام شما:&lt;/label&gt;
+&lt;textarea id="message" name="message" rows="4" cols="50"&gt;&lt;/textarea&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Embedding Content -->
+    <section id="embedding" class="content-section">
+        <h2>۱۴. جاسازی محتوا</h2>
+        <p>با استفاده از iframe و object می‌توانید محتوای خارجی را در صفحه خود جاسازی کنید.</p>
+
+        <h3>Iframe برای جاسازی صفحات وب</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- جاسازی صفحه وب دیگر --&gt;
+&lt;iframe src="https://example.com" width="100%" height="400" frameborder="0"&gt;
+  مرورگر شما از iframe پشتیبانی نمی‌کند.
+  &lt;a href="https://example.com"&gt;مشاهده صفحه&lt;/a&gt;
+&lt;/iframe&gt;
+
+&lt;!-- iframe امن با sandbox --&gt;
+&lt;iframe src="external-content.html" width="600" height="300"
+        sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"&gt;
+&lt;/iframe&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>جاسازی نقشه</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- جاسازی نقشه گوگل --&gt;
+&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d311036.7775878906!2d51.21059104999999!3d35.212121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8de8!2z2KfYstmI2KjYsdivINit2LfYtNix2Kcg2KfZhNin2YTYsdin2YYg2KfZhNiz2YjYsdmG2K8!5e0!3m2!1sen!2s!4v1653123456789!5m2!1sen!2s"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"&gt;
+&lt;/iframe&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>Object برای multimedia</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- جاسازی PDF --&gt;
+&lt;object data="document.pdf" type="application/pdf" width="100%" height="500px"&gt;
+  &lt;p&gt;مرورگر شما از نمایش PDF پشتیبانی نمی‌کند.
+  &lt;a href="document.pdf"&gt;دانلود PDF&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/object&gt;
+
+&lt;!-- جاسازی فلش (قدیمی) --&gt;
+&lt;object width="400" height="300" data="movie.swf" type="application/x-shockwave-flash"&gt;
+  &lt;param name="movie" value="movie.swf"&gt;
+  &lt;p&gt;برای مشاهده این محتوا به فلش‌پلیر نیاز دارید.&lt;/p&gt;
+&lt;/object&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: Validation -->
+    <section id="validation" class="content-section">
+        <h2>۱۵. اعتبارسنجی و بررسی HTML</h2>
+        <p>برای اطمینان از درست بودن کد HTML خود، می‌توانید از ابزارهای اعتبارسنجی استفاده کنید.</p>
+
+        <h3>ویژگی‌های اعتبارسنجی در فرم‌ها</h3>
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- اعتبارسنجی پایه --&gt;
+&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="email"&gt;ایمیل (الزامی):&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="age"&gt;سن (بین ۱۸ تا ۶۵):&lt;/label&gt;
+  &lt;input type="number" id="age" name="age" min="18" max="65" required&gt;
+
+  &lt;label for="phone"&gt;تلفن (الگوی خاص):&lt;/label&gt;
+  &lt;input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"&gt;
+
+  &lt;label for="message"&gt;پیام (حداقل ۱۰ کاراکتر):&lt;/label&gt;
+  &lt;textarea id="message" name="message" minlength="10" maxlength="500" required&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;ارسال&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <h3>نسخه‌های مختلف HTML</h3>
+        <ul>
+            <li><strong>HTML5:</strong> آخرین نسخه استاندارد فعلی (DOCTYPE: <code>&lt;!DOCTYPE html&gt;</code>) </li>
+            <li><strong>HTML 4.01:</strong> نسخه قدیمی با Strict, Transitional, Frameset</li>
+            <li><strong>XHTML:</strong> HTML به صورت XML (نیاز به تگ‌های بسته و حروف کوچک)</li>
+        </ul>
+
+        <h3>ابزارهای اعتبارسنجی رسمی</h3>
+        <p>برای بررسی درست بودن کد HTML خود از ابزارهای زیر استفاده کنید:</p>
+        <ul>
+            <li>&lt;a href="https://validator.w3.org/"&gt;W3C HTML Validator&lt;/a&gt; - اعتبارسنج رسمی</li>
+            <li>&lt;a href="https://wave.webaim.org/"&gt;WAVE Web Accessibility Evaluation Tool&lt;/a&gt; - بررسی دسترسی‌پذیری</li>
+            <li>DevTools مرورگرها (F12)</li>
+        </ul>
+
+        <div class="code-block">
+            <pre><code class="language-html">&lt;!-- نمونه ساختار HTML5 معتبر --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="fa"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;صفحه نمونه&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;عنوان اصلی&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;p&gt;محتوای اصلی&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; ۲۰۲۴&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+    </section>
+
+    <!-- Section: All HTML Tags -->
+    <section id="all-tags" class="content-section">
+        <h2>۱۶. لیست کامل تگ‌های HTML5</h2>
+        <p>در ادامه لیست کامل تمام تگ‌های HTML5 با توضیح و مثال آورده شده است:</p>
+
+        <h3>۱. تگ‌های پایه و ساختار</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;!DOCTYPE html&gt;</h4>
+                <p>مشخص کننده نسخه HTML</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> ندارد</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;html&gt;</h4>
+                <p>ریشه سند HTML</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;html lang="fa" dir="rtl"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> lang, dir, manifest</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;head&gt;</h4>
+                <p>فراداده‌ها و اطلاعات صفحه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;صفحه&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> profile (قدیمی)</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;body&gt;</h4>
+                <p>محتوای قابل مشاهده صفحه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;body&gt;
+  &lt;h1&gt;عنوان&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;title&gt;</h4>
+                <p>عنوان صفحه در تب مرورگر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;title&gt;آموزش HTML&lt;/title&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> ندارد</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;base&gt;</h4>
+                <p>نشانی پایه برای URL‌های نسبی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;base href="https://example.com/" target="_blank"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> href, target</p>
+            </div>
+        </div>
+
+        <h3>۲. تگ‌های متا و لینک</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;meta&gt;</h4>
+                <p>فراداده‌های صفحه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> charset, content, http-equiv, name</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;link&gt;</h4>
+                <p>ارتباط با منابع خارجی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;link rel="icon" href="favicon.ico"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> href, rel, type, media, hreflang, crossorigin</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;style&gt;</h4>
+                <p>CSS داخلی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;style&gt;
+  body { background: #fff; }
+&lt;/style&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> type, media</p>
+            </div>
+        </div>
+
+        <h3>۳. تگ‌های متن و قالب‌بندی</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;h1&gt; تا &lt;h6&gt;</h4>
+                <p>سطوح مختلف تیترها</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;h1&gt;تیتر اصلی&lt;/h1&gt;
+&lt;h2&gt;تیتر سطح دوم&lt;/h2&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;p&gt;</h4>
+                <p>پاراگراف متن</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;متن پاراگراف&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;br&gt;</h4>
+                <p>شکست خط</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>اولین خط&lt;br&gt;
+دومین خط</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> ندارد</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;hr&gt;</h4>
+                <p>خط جداکننده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;بخش اول&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;بخش دوم&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> ندارد (HMTL5)</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;strong&gt;</h4>
+                <p>متن ضخیم مهم</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;این &lt;strong&gt;مهم&lt;/strong&gt; است&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;em&gt;</h4>
+                <p>متن کج تأکیدی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;این &lt;em&gt;مهم&lt;/em&gt; است&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;mark&gt;</h4>
+                <p>متن هایلایت شده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;این &lt;mark&gt;مهم&lt;/mark&gt; است&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;sub&gt;</h4>
+                <p>زیرنویس</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;sup&gt;</h4>
+                <p>بالانویس</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>E = mc&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;blockquote&gt;</h4>
+                <p>نقل قول طولانی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;blockquote&gt;
+  برنامه‌نویسی هنر تبدیل...
+&lt;/blockquote&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> cite</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;q&gt;</h4>
+                <p>نقل قول کوتاه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;q&gt;این یک نقل قول است&lt;/q&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> cite</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;cite&gt;</h4>
+                <p>عنوان اثر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;cite&gt;کتاب برنامه‌نویسی&lt;/cite&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;pre&gt;</h4>
+                <p>متن از پیش قالب‌بندی شده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;pre&gt;
+جنگل
+  درخت‌ها
+    برگ‌ها
+&lt;/pre&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;code&gt;</h4>
+                <p>کد برنامه‌نویسی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>const x = 5;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+        </div>
+
+        <h3>۴. لینک‌ها و تصاویر</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;a&gt;</h4>
+                <p>Anchor/Link</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;a href="https://example.com"&gt;متن لینک&lt;/a&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> href, target, rel, download, hreflang, type, ping</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;img&gt;</h4>
+                <p>نمایش تصویر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;img src="image.jpg" alt="توضیح تصویر" width="300" height="200"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, alt, width, height, loading, crossorigin, usemap, ismap, srcset, sizes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;picture&gt;</h4>
+                <p>تصویر واکنش‌گرا</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;picture&gt;
+  &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
+  &lt;img src="small.jpg" alt="تصویر"&gt;
+&lt;/picture&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;source&gt;</h4>
+                <p>منبع رسانه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;video controls&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+&lt;/video&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, type, srcset, sizes, media</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;figure&gt;</h4>
+                <p>شکل یا تصویر با عنوان</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;figure&gt;
+  &lt;img src="chart.jpg" alt="نمودار"&gt;
+  &lt;figcaption&gt;نمودار فروش ماهانه&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;figcaption&gt;</h4>
+                <p>عنوان شکل یا تصویر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;figcaption&gt;عنوان تصویر&lt;/figcaption&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+        </div>
+
+        <h3>۵. لیست‌ها</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;ul&gt;</h4>
+                <p>لیست نامرتب</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;ul&gt;
+  &lt;li&gt;آیتم اول&lt;/li&gt;
+  &lt;li&gt;آیتم دوم&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;ol&gt;</h4>
+                <p>لیست مرتب</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;ol&gt;
+  &lt;li&gt;گام اول&lt;/li&gt;
+  &lt;li&gt;گام دوم&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> type, start, reversed</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;li&gt;</h4>
+                <p>آیتم لیست</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;li&gt;مورد لیست&lt;/li&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> value, type (قدیمی)</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;dl&gt;</h4>
+                <p>لیست توضیحی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;زبان نشانه‌گذاری وب&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;dt&gt;</h4>
+                <p>اصطلاح در لیست توضیحی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;dt&gt;اصطلاح&lt;/dt&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;dd&gt;</h4>
+                <p>توضیح اصطلاح</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;dd&gt;توضیح اصطلاح&lt;/dd&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+        </div>
+
+        <h3>۶. جداول</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;table&gt;</h4>
+                <p>جدول داده‌ها</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;سلول&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> summary (قدیمی)</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;caption&gt;</h4>
+                <p>عنوان جدول</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;table&gt;
+  &lt;caption&gt;عنوان جدول&lt;/caption&gt;
+&lt;/table&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;thead&gt;</h4>
+                <p>سرتیترهای جدول</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;thead&gt;
+  &lt;tr&gt;&lt;th&gt;ستون&lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;tbody&gt;</h4>
+                <p>بدنه جدول</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;tbody&gt;
+  &lt;tr&gt;&lt;td&gt;داده&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;tfoot&gt;</h4>
+                <p>فوتر جدول</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;tfoot&gt;
+  &lt;tr&gt;&lt;td&gt;جمع&lt;/td&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;tr&gt;</h4>
+                <p>ردیف جدول</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;tr&gt;
+  &lt;td&gt;سلول&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;th&gt;</h4>
+                <p>سلول سرتیتر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;th&gt;تیتر&lt;/th&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> colspan, rowspan, headers, scope</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;td&gt;</h4>
+                <p>سلول داده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;td&gt;داده&lt;/td&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> colspan, rowspan, headers</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;col&gt;</h4>
+                <p>تعریف ستون</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;colgroup&gt;
+  &lt;col span="2" style="background: red"&gt;
+&lt;/colgroup&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> span</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;colgroup&gt;</h4>
+                <p>گروه ستون‌ها</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;table&gt;
+  &lt;colgroup span="2"&gt;&lt;/colgroup&gt;
+  &lt;tr&gt;&lt;td&gt;داده&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> span</p>
+            </div>
+        </div>
+
+        <h3>۷. فرم‌ها</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;form&gt;</h4>
+                <p>فرم HTML</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;input name="text"&gt;
+  &lt;button type="submit"&gt;ارسال&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> action, method, enctype, novalidate, target</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;input&gt;</h4>
+                <p>ورودی فرم (انواع مختلف)</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;!-- متن --&gt;
+&lt;input type="text"&gt;
+
+&lt;!-- ایمیل --&gt;
+&lt;input type="email"&gt;
+
+&lt;!-- گذرواژه --&gt;
+&lt;input type="password"&gt;
+
+&lt;!-- شماره --&gt;
+&lt;input type="number" min="0" max="100"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> type, name, value, required, disabled, readonly, pattern, min, max, step</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;textarea&gt;</h4>
+                <p>ناحیه متن چند خطی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;textarea rows="4" cols="50" maxlength="500"&gt;
+متن پیش‌فرض...
+&lt;/textarea&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> rows, cols, maxlength, minlength, placeholder, required, readonly</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;select&gt;</h4>
+                <p>منوی کشویی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;select name="country"&gt;
+  &lt;option value=""&gt;انتخاب کنید&lt;/option&gt;
+  &lt;option value="ir"&gt;ایران&lt;/option&gt;
+  &lt;option value="us"&gt;آمریکا&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> name, multiple, required, disabled, size</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;option&gt;</h4>
+                <p>گزینه در select</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;option value="ir" selected&gt;
+  ایران
+&lt;/option&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> value, selected, disabled</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;button&gt;</h4>
+                <p>دکمه قابل کلیک</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;button type="submit"&gt;ارسال&lt;/button&gt;
+&lt;button type="reset"&gt;بازنشانی&lt;/button&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> type, name, value, disabled</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;label&gt;</h4>
+                <p>برچسب برای ورودی‌ها</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;label for="name"&gt;نام:&lt;/label&gt;
+&lt;input id="name" type="text"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> for</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;fieldset&gt;</h4>
+                <p>گروه‌بندی فرم</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;اطلاعات شخصی&lt;/legend&gt;
+  &lt;!-- ورودی‌ها --&gt;
+&lt;/fieldset&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> disabled</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;legend&gt;</h4>
+                <p>عنوان fieldset</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;legend&gt;اطلاعات تماس&lt;/legend&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;progress&gt;</h4>
+                <p>نمایش پیشرفت</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> value, max</p>
+            </div>
+        </div>
+
+        <h3>۸. رسانه و جاسازی</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;audio&gt;</h4>
+                <p>پخش صدا</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;audio controls&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> controls, autoplay, muted, loop, preload</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;video&gt;</h4>
+                <p>پخش ویدیو</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;video controls width="640" height="360"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> width, height, controls, autoplay, muted, loop, poster, preload</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;iframe&gt;</h4>
+                <p>قاب تعبیه شده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;iframe src="https://example.com"
+        width="100%" height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, width, height, sandbox, referrerpolicy, loading</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;canvas&gt;</h4>
+                <p>بوم رسم گرافیکی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;canvas id="myCanvas"
+        width="400" height="200"&gt;
+&lt;/canvas&gt;
+
+&lt;script&gt;
+  const ctx = myCanvas.getContext('2d');
+  ctx.fillRect(10, 10, 100, 100);
+&lt;/script&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> width, height</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;svg&gt;</h4>
+                <p>گرافیک برداری</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40"
+          fill="blue" stroke="red"/&gt;
+&lt;/svg&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> width, height, viewBox</p>
+            </div>
+        </div>
+
+        <h3>۹. HTML معنایی</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;header&gt;</h4>
+                <p>سر صفحه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;header&gt;
+  &lt;h1&gt;عنوان سایت&lt;/h1&gt;
+  &lt;nav&gt;منو&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;nav&gt;</h4>
+                <p>ناوبری</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;خانه&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;main&gt;</h4>
+                <p>محتوای اصلی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;main&gt;
+  &lt;h1&gt;عنوان صفحه&lt;/h1&gt;
+  &lt;p&gt;محتوای اصلی...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;section&gt;</h4>
+                <p>بخش محتوا</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;section&gt;
+  &lt;h2&gt;عنوان بخش&lt;/h2&gt;
+  &lt;p&gt;محتوای بخش...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;article&gt;</h4>
+                <p>مقاله مستقل</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;article&gt;
+  &lt;h2&gt;عنوان مقاله&lt;/h2&gt;
+  &lt;p&gt;محتوای مقاله...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;aside&gt;</h4>
+                <p>محتوای جانبی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;aside&gt;
+  &lt;h3&gt;اطلاعات مفید&lt;/h3&gt;
+  &lt;p&gt;متنی درباره موضوع...&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;footer&gt;</h4>
+                <p>پاورقی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;footer&gt;
+  &lt;p&gt;&amp;copy; ۲۰۲۴ تمامی حقوق محفوظ است&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;address&gt;</h4>
+                <p>اطلاعات تماس</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;address&gt;
+  &lt;p&gt;ایمیل: info@example.com&lt;/p&gt;
+  &lt;p&gt;تلفن: ۰۲۱۱۲۳۴۵۶۷۸&lt;/p&gt;
+&lt;/address&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;time&gt;</h4>
+                <p>تاریخ و زمان</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;time datetime="2024-01-15"&gt;
+  ۱۵ ژانویه ۲۰۲۴
+&lt;/time&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> datetime</p>
+            </div>
+        </div>
+
+        <h3>۱۰. برنامه‌نویسی و اسکریپت</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;script&gt;</h4>
+                <p>JavaScript داخلی یا خارجی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;!-- خارجی --&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
+
+&lt;!-- داخلی --&gt;
+&lt;script&gt;
+  console.log('Hello!');
+&lt;/script&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, type, defer, async, crossorigin</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;noscript&gt;</h4>
+                <p>محتوا برای مرورگرهای بدون JS</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;noscript&gt;
+  &lt;p&gt;برای استفاده کامل از این سایت، JavaScript را فعال کنید.&lt;/p&gt;
+&lt;/noscript&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;template&gt;</h4>
+                <p>قالب قابل clone در JS</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;template id="userCard"&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;نام&lt;/h3&gt;
+    &lt;p&gt;توضیحات&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+        </div>
+
+        <h3>۱۱. ویدجت‌ها و تعاملات</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;details&gt;</h4>
+                <p>جزئیات قابل باز/بسته شدن</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;details&gt;
+  &lt;summary&gt;جزئیات بیشتر&lt;/summary&gt;
+  &lt;p&gt;محتوای پنهان...&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> open</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;summary&gt;</h4>
+                <p>عنوان بخش details</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;summary&gt;کلیک کنید&lt;/summary&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;dialog&gt;</h4>
+                <p>پنجره محاوره‌ای</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;dialog id="modal"&gt;
+  &lt;p&gt;این یک پنجره محاوره‌ای است&lt;/p&gt;
+  &lt;button onclick="modal.close()"&gt;بستن&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> open</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;meter&gt;</h4>
+                <p>نمایش مقدار در محدوده</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;meter value="0.8" min="0" max="1" low="0.3" high="0.7"&gt;
+  ۸۰%
+&lt;/meter&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> value, min, max, low, high, optimum</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;datalist&gt;</h4>
+                <p>فهرست گزینه‌های پیشنهادی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;input list="browsers"&gt;
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Safari"&gt;
+&lt;/datalist&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;output&gt;</h4>
+                <p>نتیجه محاسبه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;output for="a b" name="result"&gt;42&lt;/output&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> for, form, name</p>
+            </div>
+        </div>
+
+        <h3>۱۲. تگ‌های دیگر HTML5</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;object&gt;</h4>
+                <p>جاسازی شیء چندرسانه‌ای</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;object data="movie.swf" type="application/x-shockwave-flash"&gt;
+  مرورگر شما از object پشتیبانی نمی‌کند.
+&lt;/object&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> data, type, width, height</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;embed&gt;</h4>
+                <p>جاسازی محتوای خارجی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;embed src="movie.swf" type="application/x-shockwave-flash"
+           width="400" height="300"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, type, width, height</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;param&gt;</h4>
+                <p>پارامتر برای object</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;object data="movie.swf"&gt;
+  &lt;param name="movie" value="movie.swf"&gt;
+  &lt;param name="autoplay" value="true"&gt;
+&lt;/object&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> name, value</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;track&gt;</h4>
+                <p>زیرنویس برای رسانه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;video controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;track src="subtitles.vtt" kind="subtitles" srclang="fa" label="فارسی"&gt;
+&lt;/video&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> src, kind, srclang, label, default</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;map&gt;</h4>
+                <p>نقشه تصویر قابل کلیک</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;img src="planets.jpg" usemap="#planetmap"&gt;
+&lt;map name="planetmap"&gt;
+  &lt;area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun"&gt;
+  &lt;area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury"&gt;
+&lt;/map&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> name</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;area&gt;</h4>
+                <p>منطقه قابل کلیک در نقشه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;area shape="rect" coords="0,0,82,126"
+      href="page.html" alt="Description"&gt;
+&lt;area shape="circle" coords="90,58,10"
+      href="page2.html" alt="Description"&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> shape, coords, href, alt, target</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;ruby&gt;</h4>
+                <p>حاشیه‌نویسی برای زبان‌های آسیایی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;ruby&gt;
+  漢字 &lt;rt&gt;Kanji&lt;/rt&gt;
+&lt;/ruby&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;rt&gt;</h4>
+                <p>تلفظ/ترجمه کاراکتر</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;ruby&gt;
+  漢 &lt;rt&gt;Hàn&lt;/rt&gt;
+&lt;/ruby&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;rp&gt;</h4>
+                <p>پرانتز برای مرورگرهای بدون پشتیبانی</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;ruby&gt;
+  漢 &lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;Hàn&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+&lt;/ruby&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;bdi&gt;</h4>
+                <p>عزل جهت متن</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;نام: &lt;bdi&gt;مراد&lt;/bdi&gt;, امتیاز: ۱۰۰&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> Global attributes</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;bdo&gt;</h4>
+                <p>بازنویسی جهت متن</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;bdo dir="rtl"&gt;This text will go right-to-left&lt;/bdo&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> dir</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;wbr&gt;</h4>
+                <p>امکان شکست کلمه</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;p&gt;VeryLongWordThatCan&lt;wbr&gt;BeBrokenHere&lt;/p&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> ندارد</p>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.5rem;">
+                <h4>&lt;slot&gt;</h4>
+                <p>محل قرارگیری محتوای shadow DOM</p>
+                <div class="code-block" style="margin-top: 0.5rem;">
+                    <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot name="title"&gt;Default Title&lt;/slot&gt;
+    &lt;slot&gt;Default Content&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+                    <button class="copy-button">کپی</button>
+                </div>
+                <p><strong>ویژگی‌ها:</strong> name</p>
+            </div>
+        </div>
+
+        <h3>۱۳. تگ‌های قدیمی و منسوخ (CSS استفاده کنید)</h3>
+        <div class="code-block">
+            <pre><code>&lt;!-- این تگ‌ها قدیمی هستند و از CSS استفاده کنید --&gt;
+
+&lt;!-- برای رنگ متن --&gt;
+&lt;font color="red" size="3"&gt;متن قرمز&lt;/font&gt; ← &lt;span style="color:red"&gt;استفاده کنید&lt;/span&gt;
+
+&lt;!-- برای وسط‌چین کردن --&gt;
+&lt;center&gt;متن وسط&lt;/center&gt; ← &lt;div style="text-align:center"&gt;استفاده کنید&lt;/div&gt;
+
+&lt;!-- برای حرکت متن --&gt;
+&lt;marquee&gt;متن متحرک&lt;/marquee&gt; ← animation در CSS استفاده کنید
+
+&lt;!-- برای چشمک زدن --&gt;
+&lt;blink&gt;متن چشمک زن&lt;/blink&gt; ← animation در CSS استفاده کنید
+
+&lt;!-- برای خط زیر --&gt;
+&lt;u&gt;زیرخط‌دار&lt;/u&gt; ← &lt;span style="text-decoration:underline"&gt;استفاده کنید&lt;/span&gt;
+
+&lt;!-- لیست‌های قدیمی --&gt;
+&lt;menu&gt;منو قدیمی&lt;/menu&gt; ← &lt;ul&gt; استفاده کنید
+&lt;dir&gt;دایرکتوری&lt;/dir&gt; ← &lt;ul&gt; استفاده کنید
+
+&lt;!-- فریم‌ها (قدیمی) --&gt;
+&lt;frameset cols="50%,50%"&gt;
+  &lt;frame src="page1.html"&gt;
+  &lt;frame src="page2.html"&gt;
+  &lt;noframes&gt;مرورگر شما از فریم پشتیبانی نمی‌کند&lt;/noframes&gt;
+&lt;/frameset&gt; ← از iframe استفاده کنید</code></pre>
+            <button class="copy-button">کپی</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color)); border-radius: 0.5rem; color: white;">
+            <h3>تمام تگ‌های HTML5 پوشش داده شدند</h3>
+            <p style="margin-top: 1rem; opacity: 0.9;">
+                این لیست پیشرفته‌ترین و کامل‌ترین راهنمای تگ‌های HTML5 است. همه تگ‌های استاندارد، ویژگی‌ها و مثال‌های عملی پوشش داده شده‌اند.
+            </p>
+        </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>این آموزش یک نقطه شروع عالی برای ورود به دنیای طراحی وب است.</p>
+      <p>قدم بعدی؟ یادگیری <strong>CSS</strong> برای استایل‌دهی و <strong>JavaScript</strong> برای افزودن تعامل.</p>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem;">موفق باشید!</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Dark Mode Toggle and Copy Button -->
+  <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+    const bodyElement = document.body;
+
+    // Check for saved theme in localStorage or system preference
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        bodyElement.classList.add('dark');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+    } else {
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+    }
+
+    // Toggle dark mode on button click
+    darkModeToggle.addEventListener('click', () => {
+        bodyElement.classList.toggle('dark');
+        if (bodyElement.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'block';
+        } else {
+            localStorage.setItem('theme', 'light');
+            moonIcon.style.display = 'block';
+            sunIcon.style.display = 'none';
+        }
+    });
+    
+    // Add copy functionality to all copy buttons
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const pre = button.previousElementSibling;
+            if (pre && pre.querySelector('code')) {
+                const code = pre.querySelector('code').innerText;
+                try {
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerText = 'کپی شد!';
+                        setTimeout(() => { button.innerText = 'کپی'; }, 2000);
+                    });
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement("textarea");
+                    textArea.value = code;
+                    textArea.style.position = "fixed"; 
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        button.innerText = 'کپی شد!';
+                          setTimeout(() => { button.innerText = 'کپی'; }, 2000);
+                    } catch (err) {
+                        console.error('Fallback: Oops, unable to copy', err);
+                    }
+                    document.body.removeChild(textArea);
+                }
+            }
+        });
+    });
+  </script>
+
+</body>
+</html>
